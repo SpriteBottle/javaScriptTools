@@ -8,7 +8,7 @@ color generation, and supports 140 browser-supported default colors and multiple
 
 ```bash
 
-npm install color-tool
+npm install js-tool-color
 
 ```
 
@@ -17,7 +17,7 @@ npm install color-tool
 ```javascript
 
 //First import the Color-tool library
-const Color = require('color-tool');
+const Color = require('js-tool-color');
 
 //You can then use the methods in the library
 let checkColor = Color.checks('rgba(255,255,255,1)')
