@@ -62,7 +62,7 @@ Color.plugin(yourPlugin).run()
 | toType            | color, type                    | Converts a color to a specific color format.                                                                                                                                                  |
 | transformation    | color                          | Transforms the input color from rgb to hex or vice versa.                                                                                                                                     |
 
-For complete API documentation, see [API documentation](documentation/module-colorUtils.html)
+For complete API documentation, see [API documentation](https://spritebottle.github.io/)
 
 # License
 
