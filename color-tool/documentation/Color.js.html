@@ -1,0 +1,1526 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 4.0.2">
+  <meta charset="utf-8">
+  <title>Source: Color.js</title>
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-banner" role="banner">
+        </div>
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1>Source: Color.js</h1>
+          </header>
+          <article>
+            <pre class="prettyprint linenums"><code>/**
+ * @module colorUtils
+ * @version 1.0.0
+ * @type {Object}
+ */
+const Color &#x3D; function (exports) {
+    const rgbaRegExp &#x3D; &#x27;(\\.\\d+|\\d+\\.\\d+|\\d+)&#x27;
+    const hslaRegExp &#x3D; &#x27;(\\.\\d+%?|\\d+\\.\\d+%?|\\d+%?)&#x27;
+    const labRegExp &#x3D; &#x27;(-?\\.\\d+|-?\\d+\\.\\d+|-?\\d+)&#x27;
+    /**
+     * @define
+     */
+    const define &#x3D; {
+        &#x27;ALICEBLUE&#x27;: &#x27;#F0F8FF&#x27;,
+        &#x27;ANTIQUEWHITE&#x27;: &#x27;#FAEBD7&#x27;,
+        &#x27;AQUA&#x27;: &#x27;#00FFFF&#x27;,
+        &#x27;AQUAMARINE&#x27;: &#x27;#7FFFD4&#x27;,
+        &#x27;AZURE&#x27;: &#x27;#F0FFFF&#x27;,
+        &#x27;BEIGE&#x27;: &#x27;#F5F5DC&#x27;,
+        &#x27;BISQUE&#x27;: &#x27;#FFE4C4&#x27;,
+        &#x27;BLACK&#x27;: &#x27;#000000&#x27;,
+        &#x27;BLANCHEDALMOND&#x27;: &#x27;#FFEBCD&#x27;,
+        &#x27;BLUE&#x27;: &#x27;#0000FF&#x27;,
+        &#x27;BLUEVIOLET&#x27;: &#x27;#8A2BE2&#x27;,
+        &#x27;BROWN&#x27;: &#x27;#A52A2A&#x27;,
+        &#x27;BURLYWOOD&#x27;: &#x27;#DEB887&#x27;,
+        &#x27;CADETBLUE&#x27;: &#x27;#5F9EA0&#x27;,
+        &#x27;CHARTREUSE&#x27;: &#x27;#7FFF00&#x27;,
+        &#x27;CHOCOLATE&#x27;: &#x27;#D2691E&#x27;,
+        &#x27;CORAL&#x27;: &#x27;#FF7F50&#x27;,
+        &#x27;CORNFLOWERBLUE&#x27;: &#x27;#6495ED&#x27;,
+        &#x27;CORNSILK&#x27;: &#x27;#FFF8DC&#x27;,
+        &#x27;CRIMSON&#x27;: &#x27;#DC143C&#x27;,
+        &#x27;CYAN&#x27;: &#x27;#00FFFF&#x27;,
+        &#x27;DARKBLUE&#x27;: &#x27;#00008B&#x27;,
+        &#x27;DARKCYAN&#x27;: &#x27;#008B8B&#x27;,
+        &#x27;DARKGOLDENROD&#x27;: &#x27;#B8860B&#x27;,
+        &#x27;DARKGRAY&#x27;: &#x27;#A9A9A9&#x27;,
+        &#x27;DARKGREY&#x27;: &#x27;#A9A9A9&#x27;,
+        &#x27;DARKGREEN&#x27;: &#x27;#006400&#x27;,
+        &#x27;DARKKHAKI&#x27;: &#x27;#BDB76B&#x27;,
+        &#x27;DARKMAGENTA&#x27;: &#x27;#8B008B&#x27;,
+        &#x27;DARKOLIVEGREEN&#x27;: &#x27;#556B2F&#x27;,
+        &#x27;DARKORANGE&#x27;: &#x27;#FF8C00&#x27;,
+        &#x27;DARKORCHID&#x27;: &#x27;#9932CC&#x27;,
+        &#x27;DARKRED&#x27;: &#x27;#8B0000&#x27;,
+        &#x27;DARKSALMON&#x27;: &#x27;#E9967A&#x27;,
+        &#x27;DARKSEAGREEN&#x27;: &#x27;#8FBC8F&#x27;,
+        &#x27;DARKSLATEBLUE&#x27;: &#x27;#483D8B&#x27;,
+        &#x27;DARKSLATEGRAY&#x27;: &#x27;#2F4F4F&#x27;,
+        &#x27;DARKSLATEGREY&#x27;: &#x27;#2F4F4F&#x27;,
+        &#x27;DARKTURQUOISE&#x27;: &#x27;#00CED1&#x27;,
+        &#x27;DARKVIOLET&#x27;: &#x27;#9400D3&#x27;,
+        &#x27;DEEPPINK&#x27;: &#x27;#FF1493&#x27;,
+        &#x27;DEEPSKYBLUE&#x27;: &#x27;#00BFFF&#x27;,
+        &#x27;DIMGRAY&#x27;: &#x27;#696969&#x27;,
+        &#x27;DIMGREY&#x27;: &#x27;#696969&#x27;,
+        &#x27;DODGERBLUE&#x27;: &#x27;#1E90FF&#x27;,
+        &#x27;FIREBRICK&#x27;: &#x27;#B22222&#x27;,
+        &#x27;FLORALWHITE&#x27;: &#x27;#FFFAF0&#x27;,
+        &#x27;FORESTGREEN&#x27;: &#x27;#228B22&#x27;,
+        &#x27;FUCHSIA&#x27;: &#x27;#FF00FF&#x27;,
+        &#x27;GAINSBORO&#x27;: &#x27;#DCDCDC&#x27;,
+        &#x27;GHOSTWHITE&#x27;: &#x27;#F8F8FF&#x27;,
+        &#x27;GOLD&#x27;: &#x27;#FFD700&#x27;,
+        &#x27;GOLDENROD&#x27;: &#x27;#DAA520&#x27;,
+        &#x27;GRAY&#x27;: &#x27;#808080&#x27;,
+        &#x27;GREY&#x27;: &#x27;#808080&#x27;,
+        &#x27;GREEN&#x27;: &#x27;#008000&#x27;,
+        &#x27;GREENYELLOW&#x27;: &#x27;#ADFF2F&#x27;,
+        &#x27;HONEYDEW&#x27;: &#x27;#F0FFF0&#x27;,
+        &#x27;HOTPINK&#x27;: &#x27;#FF69B4&#x27;,
+        &#x27;INDIANRED &#x27;: &#x27;#CD5C5C&#x27;,
+        &#x27;INDIGO  &#x27;: &#x27;#4B0082&#x27;,
+        &#x27;IVORY&#x27;: &#x27;#FFFFF0&#x27;,
+        &#x27;KHAKI&#x27;: &#x27;#F0E68C&#x27;,
+        &#x27;LAVENDER&#x27;: &#x27;#E6E6FA&#x27;,
+        &#x27;LAVENDERBLUSH&#x27;: &#x27;#FFF0F5&#x27;,
+        &#x27;LAWNGREEN&#x27;: &#x27;#7CFC00&#x27;,
+        &#x27;LEMONCHIFFON&#x27;: &#x27;#FFFACD&#x27;,
+        &#x27;LIGHTBLUE&#x27;: &#x27;#ADD8E6&#x27;,
+        &#x27;LIGHTCORAL&#x27;: &#x27;#F08080&#x27;,
+        &#x27;LIGHTCYAN&#x27;: &#x27;#E0FFFF&#x27;,
+        &#x27;LIGHTGOLDENRODYELLOW&#x27;: &#x27;#FAFAD2&#x27;,
+        &#x27;LIGHTGRAY&#x27;: &#x27;#D3D3D3&#x27;,
+        &#x27;LIGHTGREY&#x27;: &#x27;#D3D3D3&#x27;,
+        &#x27;LIGHTGREEN&#x27;: &#x27;#90EE90&#x27;,
+        &#x27;LIGHTPINK&#x27;: &#x27;#FFB6C1&#x27;,
+        &#x27;LIGHTSALMON&#x27;: &#x27;#FFA07A&#x27;,
+        &#x27;LIGHTSEAGREEN&#x27;: &#x27;#20B2AA&#x27;,
+        &#x27;LIGHTSKYBLUE&#x27;: &#x27;#87CEFA&#x27;,
+        &#x27;LIGHTSLATEGRAY&#x27;: &#x27;#778899&#x27;,
+        &#x27;LIGHTSLATEGREY&#x27;: &#x27;#778899&#x27;,
+        &#x27;LIGHTSTEELBLUE&#x27;: &#x27;#B0C4DE&#x27;,
+        &#x27;LIGHTYELLOW&#x27;: &#x27;#FFFFE0&#x27;,
+        &#x27;LIME&#x27;: &#x27;#00FF00&#x27;,
+        &#x27;LIMEGREEN&#x27;: &#x27;#32CD32&#x27;,
+        &#x27;LINEN&#x27;: &#x27;#FAF0E6&#x27;,
+        &#x27;MAGENTA&#x27;: &#x27;#FF00FF&#x27;,
+        &#x27;MAROON&#x27;: &#x27;#800000&#x27;,
+        &#x27;MEDIUMAQUAMARINE&#x27;: &#x27;#66CDAA&#x27;,
+        &#x27;MEDIUMBLUE&#x27;: &#x27;#0000CD&#x27;,
+        &#x27;MEDIUMORCHID&#x27;: &#x27;#BA55D3&#x27;,
+        &#x27;MEDIUMPURPLE&#x27;: &#x27;#9370DB&#x27;,
+        &#x27;MEDIUMSEAGREEN&#x27;: &#x27;#3CB371&#x27;,
+        &#x27;MEDIUMSLATEBLUE&#x27;: &#x27;#7B68EE&#x27;,
+        &#x27;MEDIUMSPRINGGREEN&#x27;: &#x27;#00FA9A&#x27;,
+        &#x27;MEDIUMTURQUOISE&#x27;: &#x27;#48D1CC&#x27;,
+        &#x27;MEDIUMVIOLETRED&#x27;: &#x27;#C71585&#x27;,
+        &#x27;MIDNIGHTBLUE&#x27;: &#x27;#191970&#x27;,
+        &#x27;MINTCREAM&#x27;: &#x27;#F5FFFA&#x27;,
+        &#x27;MISTYROSE&#x27;: &#x27;#FFE4E1&#x27;,
+        &#x27;MOCCASIN&#x27;: &#x27;#FFE4B5&#x27;,
+        &#x27;NAVAJOWHITE&#x27;: &#x27;#FFDEAD&#x27;,
+        &#x27;NAVY&#x27;: &#x27;#000080&#x27;,
+        &#x27;OLDLACE&#x27;: &#x27;#FDF5E6&#x27;,
+        &#x27;OLIVE&#x27;: &#x27;#808000&#x27;,
+        &#x27;OLIVEDRAB&#x27;: &#x27;#6B8E23&#x27;,
+        &#x27;ORANGE&#x27;: &#x27;#FFA500&#x27;,
+        &#x27;ORANGERED&#x27;: &#x27;#FF4500&#x27;,
+        &#x27;ORCHID&#x27;: &#x27;#DA70D6&#x27;,
+        &#x27;PALEGOLDENROD&#x27;: &#x27;#EEE8AA&#x27;,
+        &#x27;PALEGREEN&#x27;: &#x27;#98FB98&#x27;,
+        &#x27;PALETURQUOISE&#x27;: &#x27;#AFEEEE&#x27;,
+        &#x27;PALEVIOLETRED&#x27;: &#x27;#DB7093&#x27;,
+        &#x27;PAPAYAWHIP&#x27;: &#x27;#FFEFD5&#x27;,
+        &#x27;PEACHPUFF&#x27;: &#x27;#FFDAB9&#x27;,
+        &#x27;PERU&#x27;: &#x27;#CD853F&#x27;,
+        &#x27;PINK&#x27;: &#x27;#FFC0CB&#x27;,
+        &#x27;PLUM&#x27;: &#x27;#DDA0DD&#x27;,
+        &#x27;POWDERBLUE&#x27;: &#x27;#B0E0E6&#x27;,
+        &#x27;PURPLE&#x27;: &#x27;#800080&#x27;,
+        &#x27;RED&#x27;: &#x27;#FF0000&#x27;,
+        &#x27;ROSYBROWN&#x27;: &#x27;#BC8F8F&#x27;,
+        &#x27;ROYALBLUE&#x27;: &#x27;#4169E1&#x27;,
+        &#x27;SADDLEBROWN&#x27;: &#x27;#8B4513&#x27;,
+        &#x27;SALMON&#x27;: &#x27;#FA8072&#x27;,
+        &#x27;SANDYBROWN&#x27;: &#x27;#F4A460&#x27;,
+        &#x27;SEAGREEN&#x27;: &#x27;#2E8B57&#x27;,
+        &#x27;SEASHELL&#x27;: &#x27;#FFF5EE&#x27;,
+        &#x27;SIENNA&#x27;: &#x27;#A0522D&#x27;,
+        &#x27;SILVER&#x27;: &#x27;#C0C0C0&#x27;,
+        &#x27;SKYBLUE&#x27;: &#x27;#87CEEB&#x27;,
+        &#x27;SLATEBLUE&#x27;: &#x27;#6A5ACD&#x27;,
+        &#x27;SLATEGRAY&#x27;: &#x27;#708090&#x27;,
+        &#x27;SLATEGREY&#x27;: &#x27;#708090&#x27;,
+        &#x27;SNOW&#x27;: &#x27;#FFFAFA&#x27;,
+        &#x27;SPRINGGREEN&#x27;: &#x27;#00FF7F&#x27;,
+        &#x27;STEELBLUE&#x27;: &#x27;#4682B4&#x27;,
+        &#x27;TAN&#x27;: &#x27;#D2B48C&#x27;,
+        &#x27;TEAL&#x27;: &#x27;#008080&#x27;,
+        &#x27;THISTLE&#x27;: &#x27;#D8BFD8&#x27;,
+        &#x27;TOMATO&#x27;: &#x27;#FF6347&#x27;,
+        &#x27;TURQUOISE&#x27;: &#x27;#40E0D0&#x27;,
+        &#x27;VIOLET&#x27;: &#x27;#EE82EE&#x27;,
+        &#x27;WHEAT&#x27;: &#x27;#F5DEB3&#x27;,
+        &#x27;WHITE&#x27;: &#x27;#FFFFFF&#x27;,
+        &#x27;WHITESMOKE&#x27;: &#x27;#F5F5F5&#x27;,
+        &#x27;YELLOW&#x27;: &#x27;#FFFF00&#x27;,
+        &#x27;YELLOWGREEN&#x27;: &#x27;#9ACD32&#x27;
+    }
+
+
+
+    const normalColors &#x3D; {
+        &quot;red&quot;: [&#x27;#FFB6C1&#x27;, &#x27;#FF69B4&#x27;, &#x27;#FF1493&#x27;, &#x27;#C71585&#x27;],
+        &quot;orange&quot;: [&#x27;#FFA500&#x27;, &#x27;#FF4500&#x27;],
+        &quot;yellow&quot;: [&#x27;#FFD700&#x27;, &#x27;#FFFF00&#x27;, &#x27;#FFFFE0&#x27;],
+        &quot;green&quot;: [&#x27;#90EE90&#x27;, &#x27;#006400&#x27;, &#x27;#00FF7F&#x27;],
+        &quot;blue&quot;: [&#x27;#87CEFA&#x27;, &#x27;#00BFFF&#x27;, &#x27;#1E90FF&#x27;],
+        &quot;purple&quot;: [&#x27;#EE82EE&#x27;, &#x27;#BA55D3&#x27;, &#x27;#8B008B&#x27;],
+        &quot;white_black&quot;: [&#x27;#F5F5F5&#x27;, &#x27;#FFFAFA&#x27;, &#x27;#D3D3D3&#x27;, &#x27;#000000&#x27;]
+    };
+    //这些色彩组合包括暖色调、冷色调、鲜艳的、柔和的、单色的、自然的、霓虹的、海洋的和日落的色彩等主题，每个主题都有自己特色的色彩搭配。
+    const themeColors &#x3D; {
+        &quot;warmTones&quot;: [&#x27;#FF5733&#x27;, &#x27;#FFC300&#x27;, &#x27;#DAF7A6&#x27;, &#x27;#581845&#x27;],
+        &quot;coolTones&quot;: [&#x27;#CCE5FF&#x27;, &#x27;#99D9EA&#x27;, &#x27;#00CED1&#x27;, &#x27;#274156&#x27;],
+        &quot;vibrant&quot;: [&#x27;#FF4500&#x27;, &#x27;#FF8C00&#x27;, &#x27;#FFD700&#x27;, &#x27;#ADFF2F&#x27;],
+        &quot;pastels&quot;: [&#x27;#FFDAB9&#x27;, &#x27;#FFFACD&#x27;, &#x27;#E6E6FA&#x27;, &#x27;#F5FFFA&#x27;],
+        &quot;monochromatic&quot;: [&#x27;#808080&#x27;, &#x27;#A9A9A9&#x27;, &#x27;#C0C0C0&#x27;, &#x27;#D3D3D3&#x27;],
+        &quot;nature&quot;: [&#x27;#556B2F&#x27;, &#x27;#8FBC8F&#x27;, &#x27;#20B2AA&#x27;, &#x27;#66CDAA&#x27;],
+        &quot;neon&quot;: [&#x27;#39FF14&#x27;, &#x27;#3DFAFF&#x27;, &#x27;#FF355E&#x27;, &#x27;#FF00CC&#x27;],
+        &quot;ocean&quot;: [&#x27;#1E90FF&#x27;, &#x27;#00BFFF&#x27;, &#x27;#87CEFA&#x27;, &#x27;#B0E0E6&#x27;],
+        &quot;sunset&quot;: [&#x27;#FF4500&#x27;, &#x27;#FF6347&#x27;, &#x27;#FFA07A&#x27;, &#x27;#FFDAB9&#x27;],
+    };
+    //这些色彩组合包括柔和的粉彩、土色调、秋天的阴影、朦胧的黎明和早晨的薄雾等主题，每个主题都有自己独特的柔和色彩搭配。
+    const softColors &#x3D; {
+        &quot;softPastels&quot;: [&#x27;#FED8B1&#x27;, &#x27;#FEE6CE&#x27;, &#x27;#FEE2DF&#x27;, &#x27;#E7E6E9&#x27;],
+        &quot;earthTones&quot;: [&#x27;#D7CCC8&#x27;, &#x27;#A69B97&#x27;, &#x27;#696060&#x27;, &#x27;#423D33&#x27;],
+        &quot;autumnShades&quot;: [&#x27;#DDA288&#x27;, &#x27;#BC9A85&#x27;, &#x27;#80746D&#x27;, &#x27;#574634&#x27;],
+        &quot;duskyDawn&quot;: [&#x27;#FFFAF4&#x27;, &#x27;#EEE2DF&#x27;, &#x27;#CDC1C5&#x27;, &#x27;#ACAAB7&#x27;],
+        &quot;morningMist&quot;: [&#x27;#DCE1E3&#x27;, &#x27;#D3DCE3&#x27;, &#x27;#C5DCE3&#x27;, &#x27;#B7D7E3&#x27;]
+    };
+    //情绪色彩组合
+    const sentimentColors &#x3D; {
+        relaxing: [&#x27;#ACE1AF&#x27;, &#x27;#A1C3D1&#x27;, &#x27;#76D7EA&#x27;, &#x27;#88D8B0&#x27;, &#x27;#C8E6C9&#x27;],
+        exciting: [&#x27;#FF4500&#x27;, &#x27;#FF6347&#x27;, &#x27;#FFA500&#x27;, &#x27;#FFD700&#x27;, &#x27;#FF0000&#x27;],
+        happy: [&#x27;#FFFF00&#x27;, &#x27;#ADFF2F&#x27;, &#x27;#FFD700&#x27;, &#x27;#EEE8AA&#x27;, &#x27;#F0E68C&#x27;],
+        sad: [&#x27;#708090&#x27;, &#x27;#778899&#x27;, &#x27;#2F4F4F&#x27;, &#x27;#4682B4&#x27;, &#x27;#708090&#x27;],
+    }
+    // Color combination objects for various scenarios, like normal use, thematic use, soft use, and for expressing sentiments.
+    const prefabricate &#x3D; {
+        &#x27;normal&#x27;: normalColors,
+        &#x27;theme&#x27;: themeColors,
+        &#x27;soft&#x27;: softColors,
+        &#x27;sentiment&#x27;: sentimentColors,
+    }
+
+
+    /**
+     * @description Gets all color theme sets.
+     * @param {string} theme - The desired theme.
+     * @returns {Object} The color sets of the theme.
+     */
+    exports.getThemeColorsAll &#x3D; function (theme) {
+        if (prefabricate[theme])
+            return prefabricate[theme]
+        else return prefabricate
+    }
+    /**
+     * @description Gets a specific color set from a theme.
+     * @param {string} type - The category of the theme.
+     * @param {string} theme - The specific theme in the category.
+     * @returns {Array&amp;lt;string&gt;} The color set of the theme.
+     */
+    exports.getThemeColors &#x3D; function (type, theme) {
+        if (prefabricate[type] &amp;amp;&amp;amp; prefabricate[type][theme])
+            return prefabricate[type][theme]
+        return false
+    }
+    const mark &#x3D; {
+        id: &#x27;&#x27;,
+        change: function () {
+            const str &#x3D; &#x27;0123456789ABCDEFGHIJKLMNOPQRSTTUVWXYZ&#x27;
+            this.id &#x3D; &#x27;&#x27;
+            for (let i &#x3D; 0; i &amp;lt; 35; i++) {
+                this.id +&#x3D; str.charAt(Math.floor(Math.random() * str.length))
+            }
+
+        }
+    }
+    /**
+     * @description Object to manage the list of plugins.
+     * @type {Object}
+     */
+    const plug &#x3D; {
+        &#x27;checks_public&#x27;: [],
+        &#x27;checks_fn&#x27;: [],
+        &#x27;color&#x27;: [],
+    }
+    /**
+     * @description The default structure of a plugin object.
+     * @type {Object}
+     */
+    const _plug &#x3D; {
+        id: &#x27;&#x27;,
+        type: &#x27;checks_fn&#x27;,
+        description: &#x27;本插件可以checks函数扩展修改处理具体格式的颜色函数和方法&#x27;,
+        fn: {
+            init: function (publicFn, typeToFn, color) {
+
+            }
+        }
+    } || {
+        id: &#x27;&#x27;,
+        type: &#x27;checks_public&#x27;,
+        description: &#x27;本插件可以checks函数扩展修改使用内置工具&#x27;,
+        fn: {
+            init: function (publicFn) {
+
+            }
+        }
+    } || {
+        id: &#x27;&#x27;,
+        type: &#x27;color&#x27;,
+        description: &#x27;本插件可以修改Color的内部对象&#x27;,
+        fn: {
+            init: function (exports) {
+
+            }
+        }
+    }
+    /**
+     * @description A map object to store registered plugins.
+     * @type {Map}
+     */
+    const plugins &#x3D; new Map()
+    /**
+     * @description Registers plugins to the library.
+     * @param {...Object | Object[]} plugs - One or more plugin objects.
+     * @returns {Object} An object with a &#x60;run&#x60; method to run the registered plugins.
+     * @example{
+     *         id: &#x27;&#x27;,
+     *         type: &#x27;checks_fn&#x27;,
+     *         description: &#x27;This plugin can extend the checks function to modify the color functions and methods for handling specific formats&#x27;,
+     *         fn: {
+     *             init: function (publicFn, typeToFn, color) {
+     *
+     *             }
+     *         }
+     *     } || {
+     *         id: &#x27;&#x27;,
+     *         type: &#x27;checks_public&#x27;,
+     *         description: &#x27;This plugin can be modified using the checks function extension using the built-in tools&#x27;,
+     *         fn: {
+     *             init: function (publicFn) {
+     *
+     *             }
+     *         }
+     *     } || {
+     *         id: &#x27;&#x27;,
+     *         type: &#x27;color&#x27;,
+     *         description: &#x27;This plugin can modify Color internal objects&#x27;,
+     *         fn: {
+     *             init: function (exports) {
+     *
+     *             }
+     *         }
+     *     }
+     */
+    exports.plugin &#x3D; function (...plugs) {
+        plugs.forEach(p &#x3D;&gt; {
+
+            function _register(pl) {
+                if (plugins.has(pl.id)) return console.warn(pl.id + &#x27; is already registered&#x27;)
+                if (!plug[pl.type]) return console.warn(&#x27;Unexpected plug-in type &#x27; + pl.type)
+                plugins.set(pl.id, pl)
+                plug[pl.type].push(pl)
+            }
+
+            if (Array.isArray(p)) {
+                p.forEach(v &#x3D;&gt; _register(v))
+            } else
+                _register(p)
+        })
+        return {
+            run: exports.plugin.run
+        }
+    }
+
+    /**
+     * @description Runs all registered plugins of type &#x27;color&#x27;.
+     */
+    exports.plugin.run &#x3D; function () {
+        plug.color.forEach(v &#x3D;&gt; v.fn.init(Color))
+    }
+    /**
+     * @description Returns a color value from the color definitions, if it exists.
+     * @param {string} color - The name of the color.
+     * @returns {string|boolean} The color value if it exists, &#x60;false&#x60; otherwise.
+     */
+    exports.getColor &#x3D; (color) &#x3D;&gt; {
+        if (typeof color !&#x3D;&#x3D; &#x27;string&#x27;)
+            return false;
+        if (typeof define[color.toUpperCase()] !&#x3D;&#x3D; &#x27;undefined&#x27;) return define[color.toUpperCase()];
+        return false
+    }
+    /**
+     * @description Adds a color definition.
+     * @param {string} key - The name of the color.
+     * @param {string} value - The value of the color.
+     */
+    exports.addDefine &#x3D; function (key, value) {
+        define[key] &#x3D; value;
+    }
+    /**
+     * @description Removes a color definition.
+     * @param {string} key - The name of the color to remove.
+     */
+    exports.removeDefine &#x3D; function (key) {
+        delete define[key];
+    }
+    /**
+     * @description Color detection, standardized processing methods
+     * @param color{string} needs to be detected, processed by the default value when the color can be set
+     * @return {Object} returns an object, and returns an error message {status: false, message: &quot;&quot;} when detection fails,
+     * Returns processed data on success - color type, whether there is transparency, incoming color information, raw color array, extracted as base 10 color array status: true, message: null,
+     * data: {type: &#x27;hex&#x27; || &#x27;rgb&#x27; || &#x27;rgba&#x27;,transparency: true || false ,color: &#x27;string&#x27;, strNum: [], colors: []}
+     */
+    exports.check &#x3D; function (color) {
+        if (typeof color !&#x3D;&#x3D; &#x27;string&#x27;)
+            throw new Error(&quot;Color type not is string&quot;);
+        if (typeof define[color.toUpperCase()] !&#x3D;&#x3D; &#x27;undefined&#x27;) color &#x3D; define[color.toUpperCase()];
+        color &#x3D; cleanSpace(color)
+        let c &#x3D; color.match(/^(#|rgb|rgba)/g);
+        if (c &#x3D;&#x3D;&#x3D; null) return {status: false, message: &quot;String color is neither rgb nor hexadecimal&quot;};
+        if (c[0].charAt(0) &#x3D;&#x3D;&#x3D; &#x27;#&#x27;) {
+            if (color.length !&#x3D;&#x3D; 7 &amp;amp;&amp;amp; color.length !&#x3D;&#x3D; 9 &amp;amp;&amp;amp; color.length !&#x3D;&#x3D; 4 &amp;amp;&amp;amp; color.length !&#x3D;&#x3D; 5) {
+                throw new Error(&quot;If the string color is hexadecimal, it should be 6 bits, 8 bits, 3 bits or 4 bits&quot;)
+            }
+            if (color.at(0) !&#x3D;&#x3D; &#x27;#&#x27;) throw new Error(&quot;String color is neither rgb nor hexadecimal&quot;);
+            color &#x3D; color.toLowerCase();
+            let err &#x3D; color.match(/^#(\d|[abcdef])*/g);
+            if (err[0].length !&#x3D;&#x3D; color.length)
+                throw new Error(&quot;Unexpected token in hex color : &quot; + color.at(err[0].length));
+            if (color.length &#x3D;&#x3D;&#x3D; 4 || color.length &#x3D;&#x3D;&#x3D; 5) {
+                let colors &#x3D; &#x27;#&#x27;;
+                for (let i &#x3D; 1; i &amp;lt; color.length; i++)
+                    colors +&#x3D; color.at(i) + color.at(i);
+                color &#x3D; colors;
+            }
+            let strNum &#x3D; color.match(/(\d|[abcdef]){2}/g);
+            let num &#x3D; [];
+            strNum.forEach((it, index) &#x3D;&gt; {
+                num.push(parseInt(it, 16));
+            })
+            if (num.length &#x3D;&#x3D;&#x3D; 4) num[3] &#x3D; num[3] / 255;
+            if (color.length &#x3D;&#x3D;&#x3D; 7) return {
+                data: {type: &#x27;hex&#x27;, transparency: false, color: color, strNum: strNum, colors: num}
+            };
+            if (color.length &#x3D;&#x3D;&#x3D; 9) return {
+                data: {
+                    type: &#x27;hex&#x27;,
+                    transparency: true,
+                    color: color, strNum: strNum, colors: num
+                }
+            };
+
+        } else {
+            if (color.substring(0, 4) &#x3D;&#x3D;&#x3D; &#x27;rgba&#x27;) {
+                let str &#x3D; color.match(/^rgba\((\.\d+|\d+\.\d+|\d+),(\.\d+|\d+\.\d+|\d+),(\.\d+|\d+\.\d+|\d+),?((\.\d+%|\d+\.\d+%|\d+%)|\.\d+|\d+\.\d+|\d+)\)/g);
+                if (str &#x3D;&#x3D;&#x3D; null || str[0] !&#x3D;&#x3D; color) {
+                    throw new Error(&quot;Incorrect rgba format of string color&quot;)
+                }
+                let strNum &#x3D; color.match(/((\.\d+%|\d+\.\d+%|\d+%)|\.\d+|\d+\.\d+|\d+)/g);
+                let num &#x3D; [];
+                strNum.forEach((item, index) &#x3D;&gt; {
+                    let it;
+                    if (index &amp;lt;&#x3D; 2)
+                        it &#x3D; parseFloat(item);
+                    else {
+                        if (item.charAt(item.length - 1) !&#x3D;&#x3D; &#x27;%&#x27;) {
+                            it &#x3D; parseFloat(item)
+                            if (it &gt; 1) it &#x3D; 1;
+                        } else {
+                            it &#x3D; parseFloat(item);
+                            it /&#x3D; 100;
+                            if (it &gt; 1) it &#x3D; 1;
+
+                        }
+                    }
+                    num.push(it &gt; 255 ? 255 : it);
+                })
+                if (num.length &amp;lt; 4) num.push(1);
+                return {
+                    n_data: {
+                        color: color,
+                        hex: strNum,
+                        rgb: num
+                    },
+                    data: {
+                        type: &#x27;rgba&#x27;,
+                        transparency: true,
+                        color: color, strNum: strNum, colors: num
+                    }
+                }
+            }
+            if (color.substring(0, 3) &#x3D;&#x3D;&#x3D; &#x27;rgb&#x27;) {
+                let str &#x3D; color.match(/^rgb\((\.\d+|\d+\.\d+|\d+),(\.\d+|\d+\.\d+|\d+),(\.\d+|\d+\.\d+|\d+)\)/g);
+                if (str &#x3D;&#x3D;&#x3D; null || str[0] !&#x3D;&#x3D; color) {
+                    throw new Error(&quot;Incorrect rgb format of string color&quot;)
+                }
+                let strNum &#x3D; color.match(/(\.\d+|\d+\.\d+|\d+)/g);
+                let num &#x3D; [];
+                strNum.forEach((item, index) &#x3D;&gt; {
+                    let it &#x3D; parseFloat(item);
+                    num.push(it &gt; 255 ? 255 : it);
+                })
+                return {
+                    data: {
+                        type: &#x27;rgb&#x27;,
+                        transparency: false,
+                        color: color, strNum: strNum, colors: num
+                    }
+                }
+            }
+            throw new Error(&#x60;The string color might be rgb or rgba, but is not declared in the header&#x60;)
+        }
+    }
+    /**
+     * @description This function accepts a color string, identifies its type (Hex, RGB, RGBA, HSL, HSLA), and returns a new object containing the color&#x27;s value in different formats and some related functions.
+     * @param {string} color - The color string to process. This should be a valid color value in Hex, RGB, RGBA, HSL, or HSLA format.
+     * @returns {Object} The processed color object. The object includes:
+     * - &#x27;color&#x27;: The original color value.
+     * - &#x27;type&#x27;: The type of the color value (Hex, RGB, RGBA, HSL, HSLA).
+     * - &#x27;transparency&#x27;: A boolean indicating whether the color has transparency.
+     * - &#x27;hxlArray&#x27;: The color value in Hex format, split into an array.
+     * - &#x27;hxl&#x27;: The color value in Hex format.
+     * - &#x27;rgba&#x27;: The color value in RGBA format.
+     * - &#x27;rgbaArray&#x27;: The color value in RGBA format, split into an array.
+     * - &#x27;hsla&#x27;: The color value in HSLA format.
+     * - &#x27;hslaArray&#x27;: The color value in HSLA format, split into an array.
+     * - &#x27;assemble&#x27;:This is an object that contains assembly methods for arrays of different color types
+     * - &#x27;fns&#x27;: This is an object that contains methods for other functions in Color
+     * - &#x27;split&#x27;:This is an object that contains methods that divide different types of colors into arrays
+     * - &#x27;toType&#x27;:This contains objects that convert methods between colors
+     * The object also includes several functions for manipulating the color.
+     * @throws {Error} Will throw an error if the color type is not recognized.
+     */
+    exports.checks &#x3D; function (color) {
+        if (typeof color !&#x3D;&#x3D; &#x27;string&#x27;)
+            throw new Error(&quot;Color type not is string&quot;);
+        if (define[color.toUpperCase()]) color &#x3D; define[color.toUpperCase()];
+        color &#x3D; cleanSpace(color).toLowerCase()
+        const publicFn &#x3D; {
+            &#x27;assemble&#x27;: _assemble,
+            &#x27;split&#x27;: _split,
+            &#x27;toType&#x27;: _toType,
+            &#x27;fns&#x27;: _fns,
+        }
+        plug.checks_public.forEach(v &#x3D;&gt; v.fn.init(publicFn))
+
+        function _outlet(obj) {
+            obj.mark &#x3D; mark
+            mark.change()
+            return Object.assign(publicFn, obj)
+        }
+
+        function _hxl(color) {
+            const value &#x3D; color.substring(1)
+            const errorValue &#x3D; value.match(/[^1234567890abcdefABCDEF]/g)
+            if (errorValue) throw new Error(&#x27;This color may be of type hxl, but unexpected characters &#x27; + errorValue + &#x27; appear&#x27;)
+            let newColor &#x3D; &#x27;&#x27;
+            let transparency &#x3D; false;
+            const format &#x3D; {
+                3: () &#x3D;&gt; {
+                    value.split(&#x27;&#x27;).forEach(v &#x3D;&gt; newColor +&#x3D; v + v)
+                    newColor +&#x3D; &#x27;ff&#x27;
+                },
+                4: () &#x3D;&gt; {
+                    value.split(&#x27;&#x27;).forEach(v &#x3D;&gt; newColor +&#x3D; v + v)
+                    transparency &#x3D; true
+                },
+                6: () &#x3D;&gt; newColor +&#x3D; value + &#x27;ff&#x27;,
+                8: () &#x3D;&gt; {
+                    newColor +&#x3D; value;
+                    transparency &#x3D; true
+                },
+            }
+            if (!format[value.length]) throw new Error(&#x27;If the string color is hexadecimal, it should be 6 bits, 8 bits, 3 bits or 4 bits ，but it now has only &#x27; + value.length + &#x27; bits&#x27;)
+            format[value.length]()
+            return {
+                color: color,
+                type: &#x27;hxl&#x27;,
+                hxlArray: _splitHxl(newColor),
+                hxl: _assembleHxl(newColor),
+                rgba: _hxlToRgba(newColor),
+                rgbaArray: _splitRgba(_hxlToRgba(newColor)),
+                hsla: _rgbaToHsla(_hxlToRgba(newColor)),
+                hslaArray: _splitHsla(_rgbaToHsla(_hxlToRgba(newColor)))
+            }
+        }
+
+        function _rgba(color) {
+            const value &#x3D; color.match(new RegExp(&#x60;rgba\\(${rgbaRegExp},${rgbaRegExp},${rgbaRegExp},${rgbaRegExp}\\)&#x60;, &#x27;g&#x27;))
+            if (!value) throw new Error(&#x27;This color &quot;&#x27; + color + &#x27; &quot; may be of type rgba, but it doesn\&#x27;t have four values or it\&#x27;s not an rgba&#x27;)
+            return {
+                color: color,
+                type: &#x27;rgba&#x27;,
+                transparency: true,
+                hxl: _assembleHxlArray(_rgbaToHxl(color)),
+                hxlArray: _rgbaToHxl(color),
+                rgba: _assembleRgbaArray(_splitRgba(color)),
+                rgbaArray: _splitRgba(color),
+                hsla: _rgbaToHsla(color),
+                hslaArray: _splitHsla(_rgbaToHsla(color))
+            }
+        }
+
+        function _rgb(color) {
+            const value &#x3D; color.match(new RegExp(&#x60;rgb\\(${rgbaRegExp},${rgbaRegExp},${rgbaRegExp}\\)&#x60;, &#x27;g&#x27;))
+            if (!value) throw new Error(&#x27;This color &quot;&#x27; + color + &#x27; &quot; may be of type rgb, but it doesn\&#x27;t have three values or it\&#x27;s not an rgb&#x27;)
+            const newColor &#x3D; _assembleRgbaArray(_splitRgba(color))
+            return {
+                color: color,
+                type: &#x27;rgb&#x27;,
+                transparency: false,
+                hxl: _assembleHxlArray(_rgbaToHxl(newColor)),
+                hxlArray: _rgbaToHxl(newColor),
+                rgba: newColor,
+                rgbaArray: _splitRgba(newColor),
+                hsla: _rgbaToHsla(newColor),
+                hslaArray: _splitHsla(_rgbaToHsla(newColor))
+            }
+        }
+
+        function _hsla(color) {
+            const value &#x3D; color.match(new RegExp(&#x60;hsla\\(${hslaRegExp},${hslaRegExp},${hslaRegExp},${hslaRegExp}\\)&#x60;, &#x27;g&#x27;))
+            if (!value) throw new Error(&#x27;This color &quot;&#x27; + color + &#x27; &quot; may be of type hsla, but it doesn\&#x27;t have four values, or it\&#x27;s not an hsla&#x27;)
+            const rgba &#x3D; _hslaToRgba(color)
+            return {
+                color: color,
+                type: &#x27;hsla&#x27;,
+                transparency: true,
+                hxl: _assembleHxlArray(_rgbaToHxl(rgba)),
+                hxlArray: _rgbaToHxl(rgba),
+                rgba: rgba,
+                rgbaArray: _splitRgba(rgba),
+                hsla: _rgbaToHsla(rgba),
+                hslaArray: _splitHsla(_rgbaToHsla(rgba))
+            }
+        }
+
+        function _hsl(color) {
+            const value &#x3D; color.match(new RegExp(&#x60;hsl\\(${hslaRegExp},${hslaRegExp},${hslaRegExp}\\)&#x60;, &#x27;g&#x27;))
+            if (!value) throw new Error(&#x27;This color &quot;&#x27; + color + &#x27; &quot; may be of type hsl, but it doesn\&#x27;t have three values, or it\&#x27;s not an hsl&#x27;)
+            const rgba &#x3D; _hslaToRgba(color)
+            return {
+                color: color,
+                type: &#x27;hsl&#x27;,
+                transparency: false,
+                hxl: _assembleHxlArray(_rgbaToHxl(rgba)),
+                hxlArray: _rgbaToHxl(rgba),
+                rgba: rgba,
+                rgbaArray: _splitRgba(rgba),
+                hsla: _rgbaToHsla(rgba),
+                hslaArray: _splitHsla(_rgbaToHsla(rgba))
+            }
+        }
+
+
+        const typeToFun &#x3D; {
+            &#x27;typeJudgment&#x27;: function (color) {
+                //正则表达式取出颜色类型，||[] 防止错误
+                const type &#x3D; (color.match(/^(#|rgba|rgb|hsla|hsl)/g) || [])[0]
+                if (!type) throw new Error(&quot;This color &#x27;&quot; + color + &quot;&#x27;  is not hxl, rgb, rgba, hsl, hsla&quot;)
+                return type
+            },
+            &#x27;#&#x27;: _hxl,
+            &#x27;rgba&#x27;: _rgba,
+            &#x27;rgb&#x27;: _rgb,
+            &#x27;hsla&#x27;: _hsla,
+            &#x27;hsl&#x27;: _hsl
+        }
+        plug.checks_fn.forEach(v &#x3D;&gt; v.fn.init(publicFn, typeToFun, color))
+        return _outlet(typeToFun[typeToFun.typeJudgment(color)](color))
+
+    }
+
+    /**
+     * @description Transforms the input color from rgb to hex or vice versa.
+     * @param {string} color - The input color to be transformed.
+     * @returns {string} The transformed color.
+     */
+    exports.transformation &#x3D; function (color) {
+        try {
+            let handle &#x3D; this.check(color);
+            if (handle.data.type &#x3D;&#x3D;&#x3D; &#x27;rgb&#x27;) {
+                return rgbToHex(handle);
+            }
+            return hexToRgba(handle)
+        } catch (e) {
+            _error(e);
+        }
+
+
+    }
+
+
+    /**
+     * @description Converts a hex color to its rgba representation.
+     * @param {Object} handle - The handle object that contains color information.
+     * @returns {string} The rgba representation of the color.
+     */
+    function hexToRgba(handle) {
+        let rgb &#x3D; handle.data.colors.length &#x3D;&#x3D;&#x3D; 3 ? &#x27;rgb(&#x27; : &#x27;rgba(&#x27;;
+        handle.data.colors.forEach((it, index) &#x3D;&gt; {
+            rgb +&#x3D; Math.round(it * 10000) / 10000;
+            if (index !&#x3D;&#x3D; handle.data.colors.length - 1) rgb +&#x3D; &#x27;,&#x27;;
+        })
+        rgb +&#x3D; &#x27;)&#x27;;
+        return rgb;
+    }
+    /**
+     * @description Converts an rgb color to its hexadecimal representation.
+     * @param {Object} handle - The handle object that contains color information.
+     * @returns {string} The hexadecimal representation of the color.
+     */
+    function rgbToHex(handle) {
+        let hex &#x3D; &#x27;#&#x27;;
+        handle.data.colors.forEach((it, index) &#x3D;&gt; {
+            let str;
+            if (index &amp;lt;&#x3D; 2) str &#x3D; Math.round(it).toString(16);
+            else str &#x3D; Math.round((it * 256)).toString(16);
+            hex +&#x3D; str.length &#x3D;&#x3D;&#x3D; 2 ? str : &#x27;0&#x27; + str;
+        })
+        return hex;
+    }
+    /**
+     * @description Removes all spaces from a string.
+     * @param {string} str - The string from which to remove spaces.
+     * @returns {string} The string without spaces.
+     */
+    function cleanSpace(str) {
+        let value &#x3D; &#x27;&#x27;;
+        for (const s of str) {
+            if (s &#x3D;&#x3D;&#x3D; &#x27; &#x27;) continue;
+            value +&#x3D; s;
+        }
+        return value;
+    }
+
+    /**
+     * @description Generates a random color within the given range.
+     * @param {string} start - The start color of the range. Defaults to &#x27;#0000&#x27;.
+     * @param {string} end - The end color of the range. Defaults to &#x27;#ffff&#x27;.
+     * @returns {string} A random color in rgba format.
+     */
+    exports.randomColor &#x3D; function (start, end) {
+        if (typeof start &#x3D;&#x3D;&#x3D; &#x27;undefined&#x27;) start &#x3D; &#x27;#0000&#x27;;
+        if (typeof end &#x3D;&#x3D;&#x3D; &#x27;undefined&#x27;) end &#x3D; &#x27;#ffff&#x27;;
+        try {
+            let handleStart &#x3D; this.check(start);
+            let handleEnd &#x3D; this.check(end);
+            let rgba &#x3D; &#x27;rgba(&#x27;;
+            for (let i &#x3D; 0; i &amp;lt; 4; i++) {
+                if (i !&#x3D;&#x3D; 3) {
+                    let max &#x3D; Math.max(handleStart.data.colors[i], handleEnd.data.colors[i]);
+                    let min &#x3D; Math.min(handleStart.data.colors[i], handleEnd.data.colors[i]);
+                    rgba +&#x3D; (Math.floor(Math.random() * (max + 1 - min)) + min) + &#x27;,&#x27;;
+                } else {
+
+                    let max &#x3D; Math.max(typeof handleStart.data.colors[i] &#x3D;&#x3D;&#x3D; &#x27;undefined&#x27; ? 1 : handleStart.data.colors[i]
+                        , typeof handleEnd.data.colors[i] &#x3D;&#x3D;&#x3D; &#x27;undefined&#x27; ? 1 : handleEnd.data.colors[i]);
+                    let min &#x3D; Math.min(typeof handleStart.data.colors[i] &#x3D;&#x3D;&#x3D; &#x27;undefined&#x27; ? 1 : handleStart.data.colors[i]
+                        , typeof handleEnd.data.colors[i] &#x3D;&#x3D;&#x3D; &#x27;undefined&#x27; ? 1 : handleEnd.data.colors[i]);
+                    rgba +&#x3D; Math.round((Math.random() * (max - min) + min) * 10000) / 10000;
+                }
+            }
+            rgba +&#x3D; &#x27;)&#x27;;
+            return rgba;
+        } catch (e) {
+            _error(e)
+        }
+
+    }
+
+    /**
+     * @description Generates a function that gives the linear interpolated color at a specific time.
+     * @param {string} start - The start color.
+     * @param {string} end - The end color.
+     * @param {number} interval - The duration from start color to end color.
+     * @returns {Object} A set of functions, each corresponding to r, g, b, a and rgba color components.
+     */
+    exports.linearColor &#x3D; function (start, end, interval &#x3D; 1000) {
+        if (typeof start &#x3D;&#x3D;&#x3D; &#x27;undefined&#x27;) start &#x3D; &#x27;#0000&#x27;;
+        if (typeof end &#x3D;&#x3D;&#x3D; &#x27;undefined&#x27;) end &#x3D; &#x27;#ffff&#x27;;
+        try {
+            let handleStart &#x3D; this.check(start);
+            let handleEnd &#x3D; this.check(end);
+            let fun &#x3D; {};
+            let arr &#x3D; [&#x27;r&#x27;, &#x27;g&#x27;, &#x27;b&#x27;, &#x27;a&#x27;, &#x27;rgba&#x27;];
+            for (let i &#x3D; 0; i &amp;lt; 4; i++) {
+                if (i !&#x3D;&#x3D; 3) {
+                    let b &#x3D; handleStart.data.colors[i];
+                    let k &#x3D; (handleEnd.data.colors[i] - b) / interval;
+                    fun[arr[i]] &#x3D; (time) &#x3D;&gt; {
+                        if (time &gt; interval) return b + k * interval;
+                        return b + k * time;
+                    }
+                } else {
+                    let b &#x3D; typeof handleStart.data.colors[i] &#x3D;&#x3D;&#x3D; &#x27;undefined&#x27; ? 1 : handleStart.data.colors[i];
+                    let k &#x3D; ((typeof handleEnd.data.colors[i] &#x3D;&#x3D;&#x3D; &#x27;undefined&#x27; ? 1 : handleEnd.data.colors[i]) - b) / interval;
+                    fun[arr[i]] &#x3D; function (time) {
+                        if (time &gt; interval) return b + k * interval;
+                        return b + k * time;
+                    }
+                }
+            }
+            fun.rgba &#x3D; function (time) {
+                return &#x60;rgba(${this.r(time)},${this.g(time)},${this.b(time)},${this.a(time)})&#x60;
+            }
+            fun.rgb &#x3D; function (time) {
+                return &#x60;rgb(${this.r(time)},${this.g(time)},${this.b(time)})&#x60;;
+            }
+            return fun;
+        } catch (e) {
+            _error(e)
+        }
+
+    }
+    /**
+     * @description Generates a function that returns linear interpolated colors between two colors for a specific time.
+     * @param {string} color1 - The first color.
+     * @param {string} color2 - The second color.
+     * @param {number} interval - The duration from color1 to color2.
+     * @param {string} type - The color format of the input colors.
+     * @returns {Function} A function that gives the interpolated color at a specific time.
+     */
+    exports.linearColors &#x3D; function (color1, color2, interval &#x3D; 1000, type &#x3D; &#x27;rgba&#x27;) {
+        try {
+            const handle1 &#x3D; this.checks(color1)[type + &#x27;Array&#x27;]
+            const handle2 &#x3D; this.checks(color2)[type + &#x27;Array&#x27;]
+            const array &#x3D; handle1.map((v, i) &#x3D;&gt; {
+                let b &#x3D; handle1[i];
+                let k &#x3D; (handle2[i] - b) / interval;
+                return (time) &#x3D;&gt; {
+                    if (time &gt; interval) return b + k * interval;
+                    return b + k * time;
+                }
+            })
+            return function (time) {
+                const value &#x3D; array.map(v &#x3D;&gt; v(time))
+                return exports.toType(_assemble[type](value), type)
+            }
+        } catch (e) {
+            _error(e)
+        }
+    }
+    /**
+     * @description Generates a function that returns multilinear interpolated colors among several colors for a specific time.
+     * @param {Array} colors - An array of color strings.
+     * @param {number|Array} interval - The duration for the interpolation, or an array of durations for each color transition.
+     * @returns {Function} A function that gives the interpolated color at a specific time.
+     */
+    exports.multilinearColor &#x3D; (colors &#x3D; [], interval &#x3D; 1000) &#x3D;&gt; {
+        if (colors.length &amp;lt; 2) throw new Error(&quot;color numbers must be at least 2&quot;);
+        if (Array.isArray(interval) &amp;amp;&amp;amp; interval.length !&#x3D;&#x3D; colors.length - 1) throw new Error(&quot;The interval array length should be exactly the same as the colors array length minus one&quot;)
+        if (typeof interval &#x3D;&#x3D;&#x3D; &#x27;number&#x27;) {
+            const time &#x3D; interval;
+            interval &#x3D; [];
+            for (let i &#x3D; 0; i &amp;lt; colors.length - 1; i++)
+                interval.push(time / (colors.length - 1))
+        }
+        const formatColor &#x3D; [];
+        for (const color of colors)
+            formatColor.push(Color.check(color));
+        const funTutor &#x3D; [];
+        for (let i &#x3D; 0; i &amp;lt; formatColor.length - 1; i++) {
+            funTutor.push(Color.linearColor(formatColor[i].data.color, formatColor[i + 1].data.color, interval[i]));
+        }
+        return (type, time) &#x3D;&gt; {
+            let index &#x3D; 0;
+            let count &#x3D; interval[0];
+            let realTime &#x3D; time;
+            for (let i &#x3D; 1; i &amp;lt; interval.length; i++) {
+                if (count &gt; time) break;
+                count +&#x3D; interval[i];
+                realTime -&#x3D; interval[i - 1];
+                ++index;
+            }
+            return funTutor[index][type](realTime);
+        }
+    }
+    /**
+     * @description Generates a function that returns multilinear interpolated colors among several colors for a specific time.
+     * @param {Array} colors - An array of color strings.
+     * @param {number|Array} interval - The duration for the interpolation, or an array of durations for each color transition.
+     * @param {string} type - The color format of the input colors.
+     * @returns {Function} A function that gives the interpolated color at a specific time.
+     */
+    exports.multilinearColors &#x3D; function (colors, interval, type) {
+        if (typeof interval &#x3D;&#x3D;&#x3D; &#x27;number&#x27;) {
+            const time &#x3D; interval;
+            interval &#x3D; [];
+            for (let i &#x3D; 0; i &amp;lt; colors.length - 1; i++)
+                interval.push(time / (colors.length - 1))
+        }
+        const funTutor &#x3D; colors.slice(0, colors.length - 1).map((v, i) &#x3D;&gt; {
+            return exports.linearColors(colors[i], colors[i + 1], interval[i], type)
+        })
+        return (time) &#x3D;&gt; {
+            let index &#x3D; 0;
+            let count &#x3D; interval[0];
+            let realTime &#x3D; time;
+            for (let i &#x3D; 1; i &amp;lt; interval.length; i++) {
+                if (count &gt; time) break;
+                count +&#x3D; interval[i];
+                realTime -&#x3D; interval[i - 1];
+                ++index;
+            }
+            return funTutor[index](realTime);
+        }
+    }
+    /**
+     * @description This function changes the value of a single color channel (red, green, blue, alpha) in a given color.
+     *
+     * @param {string} color - The input color string in any valid CSS color format (e.g., hex, rgb, rgba, hsl, hsla).
+     *
+     * @returns {Object} An object with two methods:
+     *                  - getColor: This method returns the modified color as a string in the RGBA format.
+     *                  - setColor: This method changes the value of a color channel. It takes an options object where each key is the name of the color channel (&#x27;r&#x27;, &#x27;g&#x27;, &#x27;b&#x27;, &#x27;a&#x27;) and the value is the new value for that channel.
+     *
+     * @throws {Error} Will throw an error if the color conversion or modification fails.
+     */
+    exports.changeColor &#x3D; function (color) {
+        try {
+            const handleStart &#x3D; this.checks(color);
+            const colors &#x3D; handleStart.rgbaArray;
+            const fun &#x3D; {
+                getColor: function () {
+                    return &#x60;rgba(${colors[0]},${colors[1]},${colors[2]},${colors[3]})&#x60;
+                },
+                setColor: function (options) {
+                    const _change &#x3D; (type, number) &#x3D;&gt; {
+                        if (type &#x3D;&#x3D;&#x3D; &#x27;r&#x27; || type &#x3D;&#x3D;&#x3D; &#x27;g&#x27; || type &#x3D;&#x3D;&#x3D; &#x27;b&#x27; || type &#x3D;&#x3D;&#x3D; &#x27;a&#x27;) {
+                            const map &#x3D; {
+                                r: 0,
+                                g: 1,
+                                b: 2,
+                                a: 3,
+                            }
+                            colors[map[type]] &#x3D; number;
+                        }
+                    }
+                    for (const option in options) {
+                        _change(option, options[option])
+                    }
+                    return fun;
+                }
+            }
+            return fun
+        } catch (e) {
+            _error(e)
+        }
+
+    }
+    /**
+     * @description This function inverts the color and alpha channel of a given color.
+     *
+     * @param {string} color - The input color string in any valid CSS color format (e.g., hex, rgb, rgba, hsl, hsla).
+     * @param {string} type - The color format to return. It could be &#x27;hxl&#x27;, &#x27;rgba&#x27;, &#x27;rgb&#x27;, &#x27;hsla&#x27;, or &#x27;hsl&#x27;.
+     *
+     * @returns {string} The inverted color, in the format specified by the &#x27;type&#x27; parameter.
+     *
+     * @throws {Error} Will throw an error if the color inversion fails.
+     */
+    exports.inversion &#x3D; function (color, type) {
+        try {
+            const handle &#x3D; this.checks(color);
+            return Color.toType(&#x60;rgba(${[...handle.rgbaArray].splice(0, 3).map(v &#x3D;&gt; 255 - v).concat(1 - handle.rgbaArray[3])})&#x60;, type)
+        } catch (e) {
+            _error(e)
+        }
+    }
+    /**
+     * @description Blends multiple colors together according to a specified blending mode.
+     *              The available blending modes are &quot;add&quot;, &quot;sub&quot;, &quot;over&quot;, and &quot;multi&quot;.
+     *              The alpha (opacity) of the colors can also be blended according to the options.
+     *
+     * @param {Array} colors - An array of color strings to blend. The colors should be specified in order of application.
+     * @param {Object} options - An object with options for the blending operation. The options are:
+     *                           - &#x27;mode&#x27;: The blending mode. It can be &quot;add&quot;, &quot;sub&quot;, &quot;over&quot;, or &quot;multi&quot;.
+     *                           - &#x27;alpha&#x27;: Whether to blend the alpha (opacity) of the colors. If false, the alpha of the first color will be used.
+     *                           - &#x27;mixAlpha&#x27;: Whether to blend the alpha in a way that simulates transparency. If false, the alphas will simply be added or subtracted.
+     * @param {string} type - The color format to return. It could be &#x27;hxl&#x27;, &#x27;rgba&#x27;, &#x27;rgb&#x27;, &#x27;hsla&#x27;, or &#x27;hsl&#x27;.
+     *
+     * @returns {string} The resulting color after blending, in the format specified by the &#x27;type&#x27; parameter.
+     *
+     * @throws {Error} Will throw an error if the blending operation fails.
+     */
+    exports.blending &#x3D; function (colors &#x3D; [], options &#x3D; {}, type) {
+        try {
+            const handle &#x3D; colors.map(v &#x3D;&gt; Color.checks(v))
+            let [r, g, b, a] &#x3D; handle[0].rgbaArray;
+            const dispose &#x3D; handle.slice(1)
+
+            function _add() {
+                dispose.forEach(v &#x3D;&gt; {
+                    const [vr, vg, vb, va] &#x3D; v.rgbaArray
+                    r &#x3D; _limitRange(r + vr, 0, 255);
+                    g &#x3D; _limitRange(g + vg, 0, 255);
+                    b &#x3D; _limitRange(b + vb, 0, 255);
+                    if (options.alpha)
+                        if (options.mixAlpha) a &#x3D; _alpha(a, va)
+                        else a &#x3D; _limitRange(a + va, 0, 1);
+                })
+            }
+
+            function _sub() {
+                dispose.forEach(v &#x3D;&gt; {
+                    const [vr, vg, vb, va] &#x3D; v.rgbaArray
+                    r &#x3D; _limitRange(r - vr, 0, 255);
+                    g &#x3D; _limitRange(g - vg, 0, 255);
+                    b &#x3D; _limitRange(b - vb, 0, 255);
+                    if (options.alpha)
+                        if (options.mixAlpha) a &#x3D; _alpha(a, va)
+                        else a &#x3D; _limitRange(a - va, 0, 1);
+                })
+            }
+
+            function _over() {
+                dispose.forEach(v &#x3D;&gt; {
+                    const [vr, vg, vb, va] &#x3D; v.rgbaArray
+                    r &#x3D; _limitRange(vr &amp;lt; 28 ? (2 * r * vr / 255) : (255 - 2 * (255 - r) * (255 - vr) / 255), 0, 255);
+                    g &#x3D; _limitRange(vg &amp;lt; 28 ? (2 * g * vg / 255) : (255 - 2 * (255 - g) * (255 - vg) / 255), 0, 255);
+                    b &#x3D; _limitRange(vb &amp;lt; 28 ? (2 * b * vb / 255) : (255 - 2 * (255 - b) * (255 - vb) / 255), 0, 255);
+                    if (options.alpha)
+                        if (options.mixAlpha) a &#x3D; _alpha(a, va)
+                        else a &#x3D; _limitRange(a + va, 0, 1);
+                })
+            }
+
+            function _multi() {
+                dispose.forEach(v &#x3D;&gt; {
+                    const [vr, vg, vb, va] &#x3D; v.rgbaArray
+                    r &#x3D; _limitRange(r * vr / 255, 0, 255);
+                    g &#x3D; _limitRange(g * vg / 255, 0, 255);
+                    b &#x3D; _limitRange(b * vb / 255, 0, 255);
+                    if (options.alpha)
+                        if (options.mixAlpha) a &#x3D; _alpha(a, va)
+                        else a &#x3D; _limitRange(a * va, 0, 1);
+                })
+            }
+
+            function _alpha(a, va) {
+                return _limitRange(a + va - a * va, 0, 1);
+            }
+
+            const fn &#x3D; {
+                add: _add,
+                sub: _sub,
+                over: _over,
+                multi: _multi,
+            }
+            if (fn[options.mode]) {
+                fn[options.mode]()
+            }
+            return Color.toType(_assembleRgbaArray([r, g, b, a]), type)
+        } catch (e) {
+            _error(e)
+        }
+    }
+    /**
+     * @description This function performs a linear interpolation between two colors based on a given ratio.
+     * @param {string} color1 - The first color in any valid CSS color format.
+     * @param {string} color2 - The second color in any valid CSS color format.
+     * @param {number} t - The ratio to interpolate by (ranging from 0.0 to 1.0).
+     * @param {string} name - The name of the color model to use for interpolation (&#x27;rgba&#x27; by default).
+     * @param {string} type - The color format to return. It could be &#x27;hxl&#x27;, &#x27;rgba&#x27;, &#x27;rgb&#x27;, &#x27;hsla&#x27;, or &#x27;hsl&#x27;.
+     * @returns {string} The interpolated color in the format specified by the &#x27;type&#x27; parameter.
+     * @throws {Error} Will throw an error if the color interpolation fails.
+     */
+    exports.lerpColor &#x3D; function (color1 &#x3D; &#x27;#000000&#x27;, color2 &#x3D; &#x27;#ffffff&#x27;, t &#x3D; 0.5, name &#x3D; &#x27;rgba&#x27;, type) {
+        function _lerp(start, end, t) {
+            return start * (1 - t) + end * t;
+        }
+
+        try {
+            const colors &#x3D; []
+            const handle1 &#x3D; this.checks(color1);
+            const handle2 &#x3D; this.checks(color2);
+            handle1[name + &#x27;Array&#x27;].forEach((v, i) &#x3D;&gt; {
+                colors.push(Math.round(_lerp(handle1[name + &#x27;Array&#x27;][i], handle2[name + &#x27;Array&#x27;][i], t)))
+            })
+            return this.toType(_assembleRgbaArray(colors), type)
+
+        } catch (e) {
+            _error(e)
+        }
+
+
+    }
+    /**
+     * @description This function adjusts the HSLA values of a given color.
+     * @param {string} color - The input color string in any valid CSS color format (e.g., hex, rgb, rgba, hsl, hsla).
+     * @param {string} type - The color format to return. It could be &#x27;hxl&#x27;, &#x27;rgba&#x27;, &#x27;rgb&#x27;, &#x27;hsla&#x27;, or &#x27;hsl&#x27;.
+     * @returns {function} A function that takes an options object where each key is the name of the color channel (&#x27;h&#x27;, &#x27;s&#x27;, &#x27;b&#x27;, &#x27;a&#x27;) and the value is the new value for that channel.
+     * @throws {Error} Will throw an error if the color adjustment fails.
+     */
+    exports.hslaAdjustment &#x3D; function (color, type) {
+        try {
+            const handle &#x3D; this.checks(color);
+            let [h, s, l, a] &#x3D; handle.hslaArray
+            return function (options) {
+                if (options.h) h &#x3D; _loopRange(h + options.h, 0, 359)
+                if (options.s) s &#x3D; _limitRange(s + options.s, 0, 100)
+                if (options.b) l &#x3D; _limitRange(l + options.b, 0, 100)
+                if (options.a) a &#x3D; _limitRange(a + options.a, 0, 1)
+                return Color.toType(_assembleHslaArray([h, s, l, a], type))
+            }
+        } catch (e) {
+            _error(e)
+        }
+
+    }
+    /**
+     * @description This function adjusts the contrast of an array of colors.
+     * @param {Array&amp;lt;string&gt;} colors - The array of input color strings in any valid CSS color format.
+     * @param {number} contrast - The contrast adjustment factor.
+     * @param {string} type - The color format to return. It could be &#x27;hxl&#x27;, &#x27;rgba&#x27;, &#x27;rgb&#x27;, &#x27;hsla&#x27;, or &#x27;hsl&#x27;.
+     * @returns {Array&amp;lt;string&gt;} An array of adjusted colors in the format specified by the &#x27;type&#x27; parameter.
+     * @throws {Error} Will throw an error if the contrast adjustment fails.
+     */
+    exports.contrast &#x3D; function (colors, contrast, type) {
+        try {
+            const adjustedColors &#x3D; [];
+            const handle &#x3D; colors.map(v &#x3D;&gt; Color.checks(v))
+            handle.forEach(v &#x3D;&gt; {
+                const [h, s, l, a] &#x3D; v.hslaArray
+                const newL &#x3D; l * contrast;
+                const newS &#x3D; s * contrast;
+                adjustedColors.push(Color.toType(_assembleHslaArray([h, _limitRange(newS, 0, 100), _limitRange(newL, 0, 100), a]), type))
+            })
+            return adjustedColors
+        } catch (e) {
+            _error(e)
+        }
+    }
+    /**
+     * @description This function tints a color by mixing it with white using linear interpolation.
+     * @param {string} color - The input color string in any valid CSS color format (e.g., hex, rgb, rgba, hsl, hsla).
+     * @param {number} percentage - The percentage to mix with white.
+     * @param {string} type - The color format to return. It could be &#x27;hxl&#x27;, &#x27;rgba&#x27;, &#x27;rgb&#x27;, &#x27;hsla&#x27;, or &#x27;hsl&#x27;.
+     * @returns {string} The tinted color in the format specified by the &#x27;type&#x27; parameter.
+     */
+    exports.tint &#x3D; function (color, percentage, type) {
+        return this.lerpColor(color, &#x60;rgba(255, 255, 255, 1)&#x60;, percentage / 100, type)
+    }
+    /**
+     * @description This function shades a color by mixing it with black using linear interpolation.
+     * @param {string} color - The input color string in any valid CSS color format (e.g., hex, rgb, rgba, hsl, hsla).
+     * @param {number} percentage - The percentage to mix with black.
+     * @param {string} type - The color format to return. It could be &#x27;hxl&#x27;, &#x27;rgba&#x27;, &#x27;rgb&#x27;, &#x27;hsla&#x27;, or &#x27;hsl&#x27;.
+     * @returns {string} The shaded color in the format specified by the &#x27;type&#x27; parameter.
+     */
+    exports.shade &#x3D; function (color, percentage, type) {
+        return this.lerpColor(color, &#x60;rgba(0, 0, 0, 0)&#x60;, percentage / 100, type)
+    }
+    /**
+     * @description This function returns the complementary color of the given color.
+     * @param {string} color - The input color string in any valid CSS color format (e.g., hex, rgb, rgba, hsl, hsla).
+     * @param {string} type - The color format to return. It could be &#x27;hxl&#x27;, &#x27;rgba&#x27;, &#x27;rgb&#x27;, &#x27;hsla&#x27;, or &#x27;hsl&#x27;.
+     * @returns {string} The complementary color in the format specified by the &#x27;type&#x27; parameter.
+     */
+    exports.complement &#x3D; function (color, type) {
+        return this.hslaAdjustment(color, type)({
+            h: 180,
+        })
+    }
+
+    /**
+     * @description This function calculates the similarity between two colors in the RGBA color space.
+     * @param {string} color1 - The first color string in any valid CSS color format.
+     * @param {string} color2 - The second color string in any valid CSS color format.
+     * @returns {number} The Euclidean distance between the two colors in the RGBA color space. The higher the number, the more similar the colors
+     * @throws {Error} Will throw an error if the calculation fails.
+     */
+    exports.similarityRgba &#x3D; function (color1, color2) {
+        try {
+            let handle1 &#x3D; this.checks(color1);
+            let handle2 &#x3D; this.checks(color2);
+
+            let [r1, g1, b1] &#x3D; handle1.rgbaArray;
+            let [r2, g2, b2] &#x3D; handle2.rgbaArray;
+
+            return Math.sqrt(Math.pow(r1 - r2, 2) + Math.pow(g1 - g2, 2) + Math.pow(b1 - b2, 2));
+        } catch (e) {
+            _error(e)
+        }
+    }
+    /**
+     * @description This function calculates the similarity between two colors in the HSLA color space.
+     * @param {string} color1 - The first color string in any valid CSS color format.
+     * @param {string} color2 - The second color string in any valid CSS color format.
+     * @returns {number} The weighted average difference between the HSLA parameters of the two colors. The smaller the number, the more similar the colors are.
+     * @throws {Error} Will throw an error if the calculation fails.
+     */
+    exports.similarityHsla &#x3D; function (color1, color2) {
+        try {
+            let color1HSLA &#x3D; this.checks(color1).hslaArray;
+            let color2HSLA &#x3D; this.checks(color2).hslaArray;
+            const weights &#x3D; [1, 1, 1];
+            let similarity &#x3D; 0;
+            for (let i &#x3D; 0; i &amp;lt; 3; i++) {
+                // 计算 HSL 空间中两种颜色之间的差异 绝对值确保我们计算差异的大小
+                let diff &#x3D; Math.abs(color1HSLA[i] - color2HSLA[i]);
+                //在 Hue 的情况下，我们需要考虑 Hue 参数的周期性。色调 0 和色调 360 是相同的颜色，因此我们使用模运算符来解释这一点。.
+                if (i &#x3D;&#x3D;&#x3D; 0) diff &#x3D; diff % 360;
+                // 将权重应用于分量差异并添加到总相似性
+                similarity +&#x3D; diff * weights[i];
+            }
+            return similarity / 3;
+        } catch (e) {
+            _error(e);
+        }
+    }
+    /**
+     * @description Generates colors following a certain theme.
+     * @param {string} color - An input color in a valid CSS color format.
+     * @param {string} theme - The color theme, can be &quot;comp&quot;(complementary), &quot;sComp&quot;(split complementary), &quot;similar&quot;(analogous), &quot;triadic&quot;, or &quot;square&quot;.
+     * @param {string} type - The format of color to return, can be &#x27;hxl&#x27;, &#x27;rgba&#x27;, &#x27;rgb&#x27;, &#x27;hsla&#x27;, or &#x27;hsl&#x27;.
+     * @returns {Array&amp;lt;string&gt;} An array of colors in the theme.
+     * @throws {Error} Throws an error if the theme name is unexpected.
+     */
+    exports.colorTheme &#x3D; function (color, theme, type) {
+        try {
+            let hsl &#x3D; this.checks(color).hslaArray;
+            let [h, s, l, a] &#x3D; hsl;
+            let themes &#x3D; {
+                comp: [h, h + 180 % 360], // 对比色
+                sComp: [h, h + 150 % 360, h + 210 % 360], // 拆分对比色
+                similar: [h, h + 30 % 360, h - 30 % 360], // 相似色
+                triadic: [h, h + 120 % 360, h + 240 % 360], // 三角色
+                square: [h, h + 90 % 360, h + 180 % 360, h + 270 % 360] // 方形色
+            };
+            if (themes[theme]) {
+                return themes[theme].map(hue &#x3D;&gt; {
+                    // 我们返回 hsl 格式的颜色
+                    return this.toType(_assembleHslaArray([hue, s, l, a]), type);
+                });
+            } else {
+                throw new Error(&#x27;Unexpected theme name. The calling theme includes &quot;complementary&quot;, &quot;splitComplementary&quot;, &quot;analogous&quot;, &quot;triadic&quot;, &quot;square&quot;&#x27;);
+            }
+        } catch (e) {
+            _error(e);
+        }
+    }
+    /**
+     * @description Creates a sequence of color levels between two colors.
+     * @param {string} color1 - The first color, in a valid CSS color format.
+     * @param {string} color2 - The second color, in a valid CSS color format.
+     * @param {number} levels - The number of color levels in the sequence.
+     * @param {string} type - The format of color to return, can be &#x27;hxl&#x27;, &#x27;rgba&#x27;, &#x27;rgb&#x27;, &#x27;hsla&#x27;, or &#x27;hsl&#x27;.
+     * @returns {Array&amp;lt;string&gt;} An array of colors in the sequence.
+     * @throws {Error} Throws an error if the color transformation fails.
+     */
+    exports.seqLevels &#x3D; function (color1, color2, levels, type &#x3D; &#x27;rgba&#x27;) {
+        try {
+            const colors &#x3D; []
+            for (let i &#x3D; 0; i &amp;lt; levels; i++) {
+                colors.push(this.lerpColor(color1, color2, i / (levels - 1), type, type))
+            }
+            return colors
+        } catch (e) {
+            _error(e)
+        }
+    }
+    /**
+     * @description Converts an RGB color to a Lab color.
+     * @param {string} color - An RGB color, in a valid CSS color format.
+     * @returns {Array&amp;lt;number&gt;} An array representing the color in Lab format.
+     */
+    exports.rgbToLab &#x3D; function (color) {
+        return _assembleLabArray(_xyzToLab(_rgbToXyz(color)).map(v &#x3D;&gt; Math.round(v)))
+    }
+    /**
+     * @description Converts a Lab color to an RGB color.
+     * @param {string} color - A Lab color, in a valid CSS color format.
+     * @returns {Array&amp;lt;number&gt;} An array representing the color in RGB format.
+     */
+    exports.labToRgb &#x3D; function (color) {
+        return _assembleRgbaArray(_xyzToRgb(_labToXyz(color)).map(v &#x3D;&gt; Math.round(v)))
+    }
+    /**
+     * @description Converts a color to a specific color format.
+     * @param {string} color - An input color in a valid CSS color format.
+     * @param {string} type - The format of color to return, can be &#x27;hxl&#x27;, &#x27;rgba&#x27;, &#x27;rgb&#x27;, &#x27;hsla&#x27;, or &#x27;hsl&#x27;.
+     * @returns {string} The color in the desired format.
+     * @throws {Error} Throws an error if the color transformation fails.
+     */
+    exports.toType &#x3D; function (color, type &#x3D; &#x27;hxl&#x27;) {
+        try {
+            const handle &#x3D; Color.checks(color)
+            if (type &#x3D;&#x3D;&#x3D; &#x27;hxl&#x27; || type &#x3D;&#x3D;&#x3D; &#x27;#&#x27;) return handle.hxl;
+            if (type &#x3D;&#x3D;&#x3D; &#x27;rgb&#x27; || type &#x3D;&#x3D;&#x3D; &#x27;rgba&#x27;) return handle.rgba;
+            return handle.hsla
+        } catch (e) {
+            _error(e)
+        }
+    }
+
+
+    function _error(e) {
+        console.error(e)
+    }
+
+    function _limitRange(value, min, max) {
+        return Math.max(Math.min(value, max), min)
+    }
+
+    function _loopRange(value, min, max) {
+        return ((value - min) % (max - min + 1) + (max - min + 1)) % (max - min + 1) + min;
+    }
+
+
+    function _splitHxl(color) {
+        return color.match(/\w{2}/g)
+    }
+
+    function _splitRgba(color) {
+        color &#x3D; color.match(new RegExp(&#x60;${rgbaRegExp}&#x60;, &#x27;g&#x27;))
+        return [...[...color].splice(0, 3).map(v &#x3D;&gt; Math.round(v)), parseFloat(color[3]) || 1]
+    }
+
+    function _splitHsla(color) {
+        return color.match(/[0123456789.]+/g).map(v &#x3D;&gt; parseFloat(v))
+    }
+
+    function _assembleHxl(color) {
+        return &#x60;#&#x60; + _splitHxl(color).join(&quot;&quot;)
+    }
+
+    function _assembleHxlArray(color) {
+        return &#x60;#&#x60; + color.join(&quot;&quot;)
+    }
+
+    function _assembleRgbaArray(color) {
+        return &#x27;rgba(&#x27; + color + &#x27;)&#x27;
+    }
+
+    function _assembleHslaArray(color) {
+        if (color.length &#x3D;&#x3D;&#x3D; 3) return &#x60;hsl(${color})&#x60;
+        return &#x60;hsla(${color})&#x60;
+    }
+
+    function _hxlToRgba(color) {
+        const rgba &#x3D; _splitHxl(color).map(v &#x3D;&gt; parseInt(v, 16))
+        rgba[3] /&#x3D; 255
+        return &#x27;rgba(&#x27; + rgba + &#x27;)&#x27;
+
+    }
+
+    function _rgbaToHxl(color) {
+        return _splitRgba(color).map((v, i) &#x3D;&gt; i !&#x3D;&#x3D; 3 ? Math.round(v).toString(16) : Math.round(v * 255).toString(16)).map(v &#x3D;&gt; v.length !&#x3D;&#x3D; 2 ? &#x27;0&#x27; + v : v)
+    }
+
+    function _rgbaToHsla(color) {
+        color &#x3D; _splitRgba(color).map(v &#x3D;&gt; v / 255)
+        const [r, g, b, a] &#x3D; color
+        const max &#x3D; Math.max(r, g, b)
+        const min &#x3D; Math.min(r, g, b)
+        let h, s, l &#x3D; (max + min) / 2
+        if (max &#x3D;&#x3D;&#x3D; min) h &#x3D; s &#x3D; 0
+        else {
+            let d &#x3D; max - min;
+            s &#x3D; l &gt; 0.5 ? d / (2 - max - min) : d / (max + min)
+            switch (max) {
+                case r:
+                    h &#x3D; (g - b) / d + (g &amp;lt; b ? 6 : 0)
+                    break;
+                case g:
+                    h &#x3D; (b - r) / d + 2;
+                    break;
+                case b :
+                    h &#x3D; (r - g) / 2 + 4;
+                    break;
+            }
+            h &#x3D; h / 6 * 360
+        }
+        return &#x60;hsla(${Math.round(h)},${Math.round((s * 100))}%,${Math.round(l * 100)}%,${a * 255 || 1})&#x60;
+    }
+
+    function _hslaToRgba(color) {
+        color &#x3D; _splitHsla(color)
+        let [h, s, l, a] &#x3D; color
+        s /&#x3D; 100;
+        l /&#x3D; 100;
+        let r, g, b;
+        if (s &#x3D;&#x3D;&#x3D; 0) r &#x3D; g &#x3D; b &#x3D; l;
+        else {
+            const hue2rgb &#x3D; function (p, q, t) {
+                if (t &amp;lt; 0) t +&#x3D; 1;
+                if (t &gt; 1) t -&#x3D; 1
+                if (t &amp;lt; 1 / 6) return p + (q - p) * 6 * t;
+                if (t &amp;lt; 1 / 2) return q;
+                if (t &amp;lt; 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+                return p;
+            }
+            let q &#x3D; l &amp;lt; 0.5 ? l * (1 + s) : l + s - l * s;
+            let p &#x3D; 2 * l - q;
+            h &#x3D; h / 360
+            r &#x3D; hue2rgb(p, q, h + 1 / 3)
+            g &#x3D; hue2rgb(p, q, h)
+            b &#x3D; hue2rgb(p, q, h - 1 / 3)
+        }
+        return &#x60;rgba(${Math.round(r * 255)},${Math.round(g * 255)},${Math.round(b * 255)},${a || 1})&#x60;
+    }
+
+
+    function _assembleLabArray(lab) {
+        return &#x60;lab(${lab})&#x60;
+    }
+
+    function _splitLab(lab) {
+        return Array.isArray(lab) ? lab : lab.match(new RegExp(labRegExp, &#x27;g&#x27;)).map(v &#x3D;&gt; parseFloat(v))
+    }
+
+    function _rgbToXyz(color) {
+        color &#x3D; _splitRgba(color).map(v &#x3D;&gt; v / 255).map(v &#x3D;&gt; v &gt; 0.04045 ? Math.pow(((v + 0.055) / 1.055), 2.4) : v / 12.92)
+        const [r, g, b, a] &#x3D; color
+        let x, y, z;
+        x &#x3D; 0.412453 * r + 0.357580 * g + 0.180423 * b
+        y &#x3D; 0.212671 * r + 0.715160 * g + 0.072169 * b
+        z &#x3D; 0.019334 * r + 0.119193 * g + 0.950227 * b
+        return [x, y, z, a]
+    }
+
+    const referenceWhite &#x3D; [0.95047, 1.0, 1.08883]
+
+    function _xyzToLab(xyz) {
+        xyz &#x3D; xyz.map((v, i) &#x3D;&gt; v / referenceWhite[i]).map(v &#x3D;&gt; v &gt; Math.pow(6 / 29, 3) ? Math.pow(v, 1 / 3) : (1 / 3) * Math.pow(29 / 6, 2) * v + 16 / 116)
+        const [x, y, z] &#x3D; xyz;
+        let l, a, b;
+        l &#x3D; 116 * y - 16;
+        a &#x3D; 500 * (x - y)
+        b &#x3D; 200 * (y - z)
+        return [l, a, b]
+    }
+
+    function _labToXyz(lab) {
+        let [l, a, b] &#x3D; _splitLab(lab)
+        let y &#x3D; (l + 16) / 116
+        let x &#x3D; a / 500 + y
+        let z &#x3D; y - b / 200
+        return [x, y, z].map(v &#x3D;&gt; v &gt; 6 / 29 ? Math.pow(v, 3) : (v - 16 / 116) * 3 * Math.pow(6 / 29, 2)).map((v, i) &#x3D;&gt; v * referenceWhite[i])
+    }
+
+    function _xyzToRgb(xyz) {
+        let [x, y, z] &#x3D; xyz
+        let r &#x3D; x * 3.2406 + y * -1.5372 + z * -0.4986
+        let g &#x3D; x * -0.9689 + y * 1.8758 + z * 0.0415
+        let b &#x3D; x * 0.0557 + y * -0.2040 + z * 1.0570
+        let [rr, gg, bb] &#x3D; [r, g, b].map(v &#x3D;&gt; v &gt; 0.0031308 ? 1.055 * Math.pow(v, (1 / 2.4)) - 0.055 : 12.92 * v).map(v &#x3D;&gt; v * 255)
+        return [rr, gg, bb, 1]
+    }
+
+    const _assemble &#x3D; {
+        &#x27;rgba&#x27;: _assembleRgbaArray,
+        &#x27;rgb&#x27;: _assembleRgbaArray,
+        &#x27;hxl&#x27;: _assembleHslaArray,
+        &#x27;#&#x27;: _assembleHslaArray,
+        &#x27;hsl&#x27;: _assembleHxlArray,
+        &#x27;hsla&#x27;: _assembleHslaArray,
+        &#x27;lab&#x27;: _assembleLabArray,
+    }
+    const _split &#x3D; {
+        &#x27;rgba&#x27;: _splitRgba,
+        &#x27;rgb&#x27;: _splitRgba,
+        &#x27;hxl&#x27;: _splitHxl,
+        &#x27;#&#x27;: _splitHxl,
+        &#x27;hsl&#x27;: -_splitHsla,
+        &#x27;hsla&#x27;: _splitHsla,
+        &#x27;lab&#x27;: _assembleLabArray,
+    }
+    const _toType &#x3D; {
+        &#x27;hxlToRgba&#x27;: _hxlToRgba,
+        &#x27;rgbaToHxl&#x27;: _rgbaToHxl,
+        &#x27;rgbaToHsla&#x27;: _rgbaToHsla,
+        &#x27;rgbToXyz&#x27;: _rgbToXyz,
+        &#x27;hslaToRgba&#x27;: _hslaToRgba,
+        &#x27;xyzToRgb&#x27;: _xyzToRgb,
+        &#x27;xyzToLab&#x27;: _xyzToLab,
+        &#x27;labToXyz&#x27;: _labToXyz,
+    }
+    const _fns &#x3D; {
+        &#x27;transformation&#x27;: exports.transformation,
+        &#x27;randomColor&#x27;: exports.randomColor,
+        &#x27;linearColor&#x27;: exports.linearColor,
+        &#x27;linearColors&#x27;: exports.linearColors,
+        &#x27;multilinearColor&#x27;: exports.multilinearColor,
+        &#x27;multilinearColors&#x27;: exports.multilinearColors,
+        &#x27;changeColor&#x27;: exports.changeColor,
+        &#x27;inversion&#x27;: exports.inversion,
+        &#x27;blending&#x27;: exports.blending,
+        &#x27;lerpColor&#x27;: exports.lerpColor,
+        &#x27;hslaAdjustment&#x27;: exports.hslaAdjustment,
+        &#x27;contrast&#x27;: exports.contrast,
+        &#x27;toType&#x27;: exports.toType,
+        &#x27;seqLevels&#x27;: exports.seqLevels,
+        &#x27;colorTheme&#x27;: exports.colorTheme,
+        &#x27;similarityHsla&#x27;: exports.similarityHsla,
+        &#x27;similarityRgba&#x27;: exports.similarityRgba,
+        &#x27;complement&#x27;: exports.complement,
+        &#x27;shade&#x27;: exports.shade,
+        &#x27;tint&#x27;: exports.tint,
+        &#x27;rgbToLab&#x27;: exports.rgbToLab,
+        &#x27;labToRgb&#x27;: exports.labToRgb
+
+    }
+    return exports;
+}({})
+</code></pre>
+          </article>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 4.0.2 on July 18, 2023.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

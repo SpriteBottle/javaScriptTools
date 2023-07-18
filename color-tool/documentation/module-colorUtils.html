@@ -1,0 +1,1850 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 4.0.2">
+  <meta charset="utf-8">
+  <title>Module: colorUtils</title>
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <div class="symbol-detail-labels"><span class="label label-kind">module</span></div>
+            <h1><small></small><span class="symbol-name">colorUtils</span></h1>
+            <p class="source-link">Source: <a href="Color.js.html">Color.<wbr>js</a></p>
+            <div class="symbol-description">
+            </div>
+            <dl class="dl-compact">
+            </dl>
+          </header>
+          <section id="summary">
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Methods</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="module-colorUtils.html#.addDefine">addDefine(key, value)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-colorUtils.html#.blending">blending(colors, options, type)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-colorUtils.html#.changeColor">changeColor(color)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-colorUtils.html#.check">check(color)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-colorUtils.html#.checks">checks(color)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-colorUtils.html#.colorTheme">colorTheme(color, theme, type)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-colorUtils.html#.complement">complement(color, type)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-colorUtils.html#.contrast">contrast(colors, contrast, type)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-colorUtils.html#.getColor">getColor(color)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-colorUtils.html#.getThemeColors">getThemeColors(type, theme)</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="module-colorUtils.html#.getThemeColorsAll">getThemeColorsAll(theme)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-colorUtils.html#.hslaAdjustment">hslaAdjustment(color, type)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-colorUtils.html#.inversion">inversion(color, type)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-colorUtils.html#.labToRgb">labToRgb(color)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-colorUtils.html#.lerpColor">lerpColor(color1, color2, t, name, type)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-colorUtils.html#.linearColor">linearColor(start, end, interval)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-colorUtils.html#.linearColors">linearColors(color1, color2, interval, type)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-colorUtils.html#.multilinearColor">multilinearColor(colors, interval)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-colorUtils.html#.multilinearColors">multilinearColors(colors, interval, type)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-colorUtils.html#.plugin">plugin(plugs)</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="module-colorUtils.html#.randomColor">randomColor(start, end)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-colorUtils.html#.removeDefine">removeDefine(key)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-colorUtils.html#.rgbToLab">rgbToLab(color)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-colorUtils.html#.seqLevels">seqLevels(color1, color2, levels, type)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-colorUtils.html#.shade">shade(color, percentage, type)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-colorUtils.html#.similarityHsla">similarityHsla(color1, color2)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-colorUtils.html#.similarityRgba">similarityRgba(color1, color2)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-colorUtils.html#.tint">tint(color, percentage, type)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-colorUtils.html#.toType">toType(color, type)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-colorUtils.html#.transformation">transformation(color)</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Methods</h2>
+            <section>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".addDefine"><span class="symbol-name">addDefine</span><span class="signature"><span class="signature-params">(key, value)</span></span></h3>
+              <p>Adds a color definition.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>key</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The name of the color.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>value</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The value of the color.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".blending"><span class="symbol-name">blending</span><span class="signature"><span class="signature-params">(colors, options, type)</span>&nbsp;&rarr; <span class="signature-returns"> string</span></span></h3>
+              <p>Blends multiple colors together according to a specified blending mode.
+                The available blending modes are &quot;add&quot;, &quot;sub&quot;, &quot;over&quot;, and &quot;multi&quot;.
+                The alpha (opacity) of the colors can also be blended according to the options.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>colors</p>
+                      </td>
+                      <td>
+                        <p>Array</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>An array of color strings to blend. The colors should be specified in order of application.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>options</p>
+                      </td>
+                      <td>
+                        <p>Object</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>An object with options for the blending operation. The options are:
+                          - 'mode': The blending mode. It can be &quot;add&quot;, &quot;sub&quot;, &quot;over&quot;, or &quot;multi&quot;.
+                          - 'alpha': Whether to blend the alpha (opacity) of the colors. If false, the alpha of the first color will be used.
+                          - 'mixAlpha': Whether to blend the alpha in a way that simulates transparency. If false, the alphas will simply be added or subtracted.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>type</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The color format to return. It could be 'hxl', 'rgba', 'rgb', 'hsla', or 'hsl'.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><code>Error</code> Will throw an error if the blending operation fails.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>string</code> The resulting color after blending, in the format specified by the 'type' parameter.</p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".changeColor"><span class="symbol-name">changeColor</span><span class="signature"><span class="signature-params">(color)</span>&nbsp;&rarr; <span class="signature-returns"> Object</span></span></h3>
+              <p>This function changes the value of a single color channel (red, green, blue, alpha) in a given color.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>color</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The input color string in any valid CSS color format (e.g., hex, rgb, rgba, hsl, hsla).</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><code>Error</code> Will throw an error if the color conversion or modification fails.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>Object</code> An object with two methods:
+                    - getColor: This method returns the modified color as a string in the RGBA format.
+                    - setColor: This method changes the value of a color channel. It takes an options object where each key is the name of the color channel ('r', 'g', 'b', 'a') and the value is the new value for that channel.</p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".check"><span class="symbol-name">check</span><span class="signature"><span class="signature-params">(color)</span>&nbsp;&rarr; <span class="signature-returns"> Object</span></span></h3>
+              <p>Color detection, standardized processing methods</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>color</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>needs to be detected, processed by the default value when the color can be set</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>Object</code> returns an object, and returns an error message {status: false, message: &quot;&quot;} when detection fails,
+                    Returns processed data on success - color type, whether there is transparency, incoming color information, raw color array, extracted as base 10 color array status: true, message: null,
+                    data: {type: 'hex' || 'rgb' || 'rgba',transparency: true || false ,color: 'string', strNum: [], colors: []}</p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".checks"><span class="symbol-name">checks</span><span class="signature"><span class="signature-params">(color)</span>&nbsp;&rarr; <span class="signature-returns"> Object</span></span></h3>
+              <p>This function accepts a color string, identifies its type (Hex, RGB, RGBA, HSL, HSLA), and returns a new object containing the color's value in different formats and some related functions.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>color</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The color string to process. This should be a valid color value in Hex, RGB, RGBA, HSL, or HSLA format.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><code>Error</code> Will throw an error if the color type is not recognized.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>Object</code> The processed color object. The object includes:</p>
+                  <ul>
+                    <li>'color': The original color value.</li>
+                    <li>'type': The type of the color value (Hex, RGB, RGBA, HSL, HSLA).</li>
+                    <li>'transparency': A boolean indicating whether the color has transparency.</li>
+                    <li>'hxlArray': The color value in Hex format, split into an array.</li>
+                    <li>'hxl': The color value in Hex format.</li>
+                    <li>'rgba': The color value in RGBA format.</li>
+                    <li>'rgbaArray': The color value in RGBA format, split into an array.</li>
+                    <li>'hsla': The color value in HSLA format.</li>
+                    <li>'hslaArray': The color value in HSLA format, split into an array.</li>
+                    <li>'assemble':This is an object that contains assembly methods for arrays of different color types</li>
+                    <li>'fns': This is an object that contains methods for other functions in Color</li>
+                    <li>'split':This is an object that contains methods that divide different types of colors into arrays</li>
+                    <li>'toType':This contains objects that convert methods between colors
+                      The object also includes several functions for manipulating the color.</li>
+                  </ul>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".colorTheme"><span class="symbol-name">colorTheme</span><span class="signature"><span class="signature-params">(color, theme, type)</span>&nbsp;&rarr; <span class="signature-returns"> Array of string</span></span></h3>
+              <p>Generates colors following a certain theme.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>color</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>An input color in a valid CSS color format.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>theme</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The color theme, can be &quot;comp&quot;(complementary), &quot;sComp&quot;(split complementary), &quot;similar&quot;(analogous), &quot;triadic&quot;, or &quot;square&quot;.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>type</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The format of color to return, can be 'hxl', 'rgba', 'rgb', 'hsla', or 'hsl'.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><code>Error</code> Throws an error if the theme name is unexpected.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>Array of string</code> An array of colors in the theme.</p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".complement"><span class="symbol-name">complement</span><span class="signature"><span class="signature-params">(color, type)</span>&nbsp;&rarr; <span class="signature-returns"> string</span></span></h3>
+              <p>This function returns the complementary color of the given color.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>color</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The input color string in any valid CSS color format (e.g., hex, rgb, rgba, hsl, hsla).</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>type</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The color format to return. It could be 'hxl', 'rgba', 'rgb', 'hsla', or 'hsl'.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>string</code> The complementary color in the format specified by the 'type' parameter.</p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".contrast"><span class="symbol-name">contrast</span><span class="signature"><span class="signature-params">(colors, contrast, type)</span>&nbsp;&rarr; <span class="signature-returns"> Array of string</span></span></h3>
+              <p>This function adjusts the contrast of an array of colors.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>colors</p>
+                      </td>
+                      <td>
+                        <p>Array of string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The array of input color strings in any valid CSS color format.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>contrast</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The contrast adjustment factor.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>type</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The color format to return. It could be 'hxl', 'rgba', 'rgb', 'hsla', or 'hsl'.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><code>Error</code> Will throw an error if the contrast adjustment fails.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>Array of string</code> An array of adjusted colors in the format specified by the 'type' parameter.</p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".getColor"><span class="symbol-name">getColor</span><span class="signature"><span class="signature-params">(color)</span>&nbsp;&rarr; <span class="signature-returns"> (string or boolean)</span></span></h3>
+              <p>Returns a color value from the color definitions, if it exists.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>color</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The name of the color.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>(string or boolean)</code> The color value if it exists, <code>false</code> otherwise.</p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".getThemeColors"><span class="symbol-name">getThemeColors</span><span class="signature"><span class="signature-params">(type, theme)</span>&nbsp;&rarr; <span class="signature-returns"> Array of string</span></span></h3>
+              <p>Gets a specific color set from a theme.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>type</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The category of the theme.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>theme</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The specific theme in the category.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>Array of string</code> The color set of the theme.</p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".getThemeColorsAll"><span class="symbol-name">getThemeColorsAll</span><span class="signature"><span class="signature-params">(theme)</span>&nbsp;&rarr; <span class="signature-returns"> Object</span></span></h3>
+              <p>Gets all color theme sets.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>theme</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The desired theme.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>Object</code> The color sets of the theme.</p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".hslaAdjustment"><span class="symbol-name">hslaAdjustment</span><span class="signature"><span class="signature-params">(color, type)</span>&nbsp;&rarr; <span class="signature-returns"> function()</span></span></h3>
+              <p>This function adjusts the HSLA values of a given color.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>color</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The input color string in any valid CSS color format (e.g., hex, rgb, rgba, hsl, hsla).</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>type</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The color format to return. It could be 'hxl', 'rgba', 'rgb', 'hsla', or 'hsl'.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><code>Error</code> Will throw an error if the color adjustment fails.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>function()</code> A function that takes an options object where each key is the name of the color channel ('h', 's', 'b', 'a') and the value is the new value for that channel.</p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".inversion"><span class="symbol-name">inversion</span><span class="signature"><span class="signature-params">(color, type)</span>&nbsp;&rarr; <span class="signature-returns"> string</span></span></h3>
+              <p>This function inverts the color and alpha channel of a given color.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>color</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The input color string in any valid CSS color format (e.g., hex, rgb, rgba, hsl, hsla).</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>type</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The color format to return. It could be 'hxl', 'rgba', 'rgb', 'hsla', or 'hsl'.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><code>Error</code> Will throw an error if the color inversion fails.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>string</code> The inverted color, in the format specified by the 'type' parameter.</p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".labToRgb"><span class="symbol-name">labToRgb</span><span class="signature"><span class="signature-params">(color)</span>&nbsp;&rarr; <span class="signature-returns"> Array of number</span></span></h3>
+              <p>Converts a Lab color to an RGB color.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>color</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>A Lab color, in a valid CSS color format.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>Array of number</code> An array representing the color in RGB format.</p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".lerpColor"><span class="symbol-name">lerpColor</span><span class="signature"><span class="signature-params">(color1, color2, t, name, type)</span>&nbsp;&rarr; <span class="signature-returns"> string</span></span></h3>
+              <p>This function performs a linear interpolation between two colors based on a given ratio.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>color1</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The first color in any valid CSS color format.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>color2</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The second color in any valid CSS color format.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>t</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The ratio to interpolate by (ranging from 0.0 to 1.0).</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>name</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The name of the color model to use for interpolation ('rgba' by default).</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>type</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The color format to return. It could be 'hxl', 'rgba', 'rgb', 'hsla', or 'hsl'.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><code>Error</code> Will throw an error if the color interpolation fails.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>string</code> The interpolated color in the format specified by the 'type' parameter.</p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".linearColor"><span class="symbol-name">linearColor</span><span class="signature"><span class="signature-params">(start, end, interval)</span>&nbsp;&rarr; <span class="signature-returns"> Object</span></span></h3>
+              <p>Generates a function that gives the linear interpolated color at a specific time.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>start</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The start color.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>end</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The end color.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>interval</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The duration from start color to end color.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>Object</code> A set of functions, each corresponding to r, g, b, a and rgba color components.</p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".linearColors"><span class="symbol-name">linearColors</span><span class="signature"><span class="signature-params">(color1, color2, interval, type)</span>&nbsp;&rarr; <span class="signature-returns"> function()</span></span></h3>
+              <p>Generates a function that returns linear interpolated colors between two colors for a specific time.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>color1</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The first color.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>color2</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The second color.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>interval</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The duration from color1 to color2.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>type</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The color format of the input colors.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>function()</code> A function that gives the interpolated color at a specific time.</p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".multilinearColor"><span class="symbol-name">multilinearColor</span><span class="signature"><span class="signature-params">(colors, interval)</span>&nbsp;&rarr; <span class="signature-returns"> function()</span></span></h3>
+              <p>Generates a function that returns multilinear interpolated colors among several colors for a specific time.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>colors</p>
+                      </td>
+                      <td>
+                        <p>Array</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>An array of color strings.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>interval</p>
+                      </td>
+                      <td>
+                        <p>(number or Array)</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The duration for the interpolation, or an array of durations for each color transition.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>function()</code> A function that gives the interpolated color at a specific time.</p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".multilinearColors"><span class="symbol-name">multilinearColors</span><span class="signature"><span class="signature-params">(colors, interval, type)</span>&nbsp;&rarr; <span class="signature-returns"> function()</span></span></h3>
+              <p>Generates a function that returns multilinear interpolated colors among several colors for a specific time.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>colors</p>
+                      </td>
+                      <td>
+                        <p>Array</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>An array of color strings.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>interval</p>
+                      </td>
+                      <td>
+                        <p>(number or Array)</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The duration for the interpolation, or an array of durations for each color transition.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>type</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The color format of the input colors.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>function()</code> A function that gives the interpolated color at a specific time.</p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".plugin"><span class="symbol-name">plugin</span><span class="signature"><span class="signature-params">(plugs)</span>&nbsp;&rarr; <span class="signature-returns"> Object</span></span></h3>
+              <p>Registers plugins to the library.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>plugs</p>
+                      </td>
+                      <td>
+                        <p>(repeatable Object or Array of Object)</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>One or more plugin objects.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>Object</code> An object with a <code>run</code> method to run the registered plugins.</p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".randomColor"><span class="symbol-name">randomColor</span><span class="signature"><span class="signature-params">(start, end)</span>&nbsp;&rarr; <span class="signature-returns"> string</span></span></h3>
+              <p>Generates a random color within the given range.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>start</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The start color of the range. Defaults to '#0000'.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>end</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The end color of the range. Defaults to '#ffff'.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>string</code> A random color in rgba format.</p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".removeDefine"><span class="symbol-name">removeDefine</span><span class="signature"><span class="signature-params">(key)</span></span></h3>
+              <p>Removes a color definition.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>key</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The name of the color to remove.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".rgbToLab"><span class="symbol-name">rgbToLab</span><span class="signature"><span class="signature-params">(color)</span>&nbsp;&rarr; <span class="signature-returns"> Array of number</span></span></h3>
+              <p>Converts an RGB color to a Lab color.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>color</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>An RGB color, in a valid CSS color format.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>Array of number</code> An array representing the color in Lab format.</p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".seqLevels"><span class="symbol-name">seqLevels</span><span class="signature"><span class="signature-params">(color1, color2, levels, type)</span>&nbsp;&rarr; <span class="signature-returns"> Array of string</span></span></h3>
+              <p>Creates a sequence of color levels between two colors.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>color1</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The first color, in a valid CSS color format.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>color2</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The second color, in a valid CSS color format.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>levels</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The number of color levels in the sequence.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>type</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The format of color to return, can be 'hxl', 'rgba', 'rgb', 'hsla', or 'hsl'.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><code>Error</code> Throws an error if the color transformation fails.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>Array of string</code> An array of colors in the sequence.</p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".shade"><span class="symbol-name">shade</span><span class="signature"><span class="signature-params">(color, percentage, type)</span>&nbsp;&rarr; <span class="signature-returns"> string</span></span></h3>
+              <p>This function shades a color by mixing it with black using linear interpolation.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>color</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The input color string in any valid CSS color format (e.g., hex, rgb, rgba, hsl, hsla).</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>percentage</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The percentage to mix with black.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>type</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The color format to return. It could be 'hxl', 'rgba', 'rgb', 'hsla', or 'hsl'.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>string</code> The shaded color in the format specified by the 'type' parameter.</p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".similarityHsla"><span class="symbol-name">similarityHsla</span><span class="signature"><span class="signature-params">(color1, color2)</span>&nbsp;&rarr; <span class="signature-returns"> number</span></span></h3>
+              <p>This function calculates the similarity between two colors in the HSLA color space.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>color1</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The first color string in any valid CSS color format.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>color2</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The second color string in any valid CSS color format.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><code>Error</code> Will throw an error if the calculation fails.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>number</code> The weighted average difference between the HSLA parameters of the two colors. The smaller the number, the more similar the colors are.</p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".similarityRgba"><span class="symbol-name">similarityRgba</span><span class="signature"><span class="signature-params">(color1, color2)</span>&nbsp;&rarr; <span class="signature-returns"> number</span></span></h3>
+              <p>This function calculates the similarity between two colors in the RGBA color space.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>color1</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The first color string in any valid CSS color format.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>color2</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The second color string in any valid CSS color format.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><code>Error</code> Will throw an error if the calculation fails.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>number</code> The Euclidean distance between the two colors in the RGBA color space. The higher the number, the more similar the colors</p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".tint"><span class="symbol-name">tint</span><span class="signature"><span class="signature-params">(color, percentage, type)</span>&nbsp;&rarr; <span class="signature-returns"> string</span></span></h3>
+              <p>This function tints a color by mixing it with white using linear interpolation.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>color</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The input color string in any valid CSS color format (e.g., hex, rgb, rgba, hsl, hsla).</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>percentage</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The percentage to mix with white.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>type</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The color format to return. It could be 'hxl', 'rgba', 'rgb', 'hsla', or 'hsl'.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>string</code> The tinted color in the format specified by the 'type' parameter.</p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".toType"><span class="symbol-name">toType</span><span class="signature"><span class="signature-params">(color, type)</span>&nbsp;&rarr; <span class="signature-returns"> string</span></span></h3>
+              <p>Converts a color to a specific color format.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>color</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>An input color in a valid CSS color format.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>type</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The format of color to return, can be 'hxl', 'rgba', 'rgb', 'hsla', or 'hsl'.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><code>Error</code> Throws an error if the color transformation fails.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>string</code> The color in the desired format.</p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".transformation"><span class="symbol-name">transformation</span><span class="signature"><span class="signature-params">(color)</span>&nbsp;&rarr; <span class="signature-returns"> string</span></span></h3>
+              <p>Transforms the input color from rgb to hex or vice versa.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>color</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The input color to be transformed.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>string</code> The transformed color.</p>
+                </dd>
+              </dl>
+            </section>
+          </section>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 4.0.2 on July 18, 2023.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>
